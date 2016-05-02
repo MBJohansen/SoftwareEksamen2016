@@ -18,7 +18,10 @@ public class Employee {
 	
 	public Employee(List<Activity> activities, String ID, Project currentProject){
 		
-		
+		if(activities==null){
+			activities = new ArrayList();
+
+		}
 		
 		this.ID=ID;
 		this.activities=activities;

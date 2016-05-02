@@ -53,10 +53,9 @@ public class TestProject {
 	@Test
 	public void testAssignActivity() {
 		
-		List<Activity> testActivities = new ArrayList();
 
 		
-		Employee employee = new Employee(testActivities, "INIT", null);
+		Employee employee = new Employee(null, "INIT", null);
 		
 		assertTrue(employee.isFree());
 		Date start = new Date(2016, 5, 2);
@@ -72,20 +71,26 @@ public class TestProject {
 	}
 	
 	// Tests the finishing of an activity
-//	@Test
-//	public void testEndActivity() {
-//		Employee employee = new Employee(null, "INIT", null);
-//		
-//		Activity activity = new Activity(,,"Do something","TODO1");
-//		
-//		employee.addActivity(activity);
-//		
-//		assertEquals(1,employee.getActivities());
-//		
-//		employee.endActivity();
-//		
-//		
-//	}
+	@Test
+	public void testEndActivity() {
+
+		
+		Employee employee = new Employee(null, "INIT", null);
+		
+		Date start = new Date(2016, 5, 2);
+		Date end = new Date(2016, 5, 5);
+		
+		
+		Activity activity = new Activity(start,end,"Do something","TODO1");
+		
+		employee.addActivity(activity);
+		
+		assertEquals(1,employee.viewActivities());
+		
+		employee.endActivity();
+		
+		
+	}
 	
 	// HEY! FIX DET NU!!!!
 	
