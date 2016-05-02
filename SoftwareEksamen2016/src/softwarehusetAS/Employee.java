@@ -136,7 +136,7 @@ public class Employee {
 	
 	public boolean createActivity(Date startDate, Date endDate, String description, String activityID){
 		if(isProjectManager){
-			Activity newActivity = new Activity(startDate, endDate, description, activityID);
+			currentProject.createActivity(startDate, endDate, description, activityID);
 			return true;
 		}
 		return false;
