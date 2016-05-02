@@ -20,12 +20,19 @@ public class Employee {
 		
 		if(activities==null){
 			activities = new ArrayList();
-
+			List<Activity> activities2 = new ArrayList();
+			this.allActivities=activities2;
+		}
+		else{
+			List<Activity> activities2 = new ArrayList();
+			for(int i=0;i<activities.size();i++){
+				allActivities.add(activities.get(i));
+			}
 		}
 		
 		this.ID=ID;
 		this.activities=activities;
-		this.allActivities=activities;
+		
 		this.currentProject=currentProject;
 		Platform.editEmployee(this);
 
@@ -61,6 +68,9 @@ public class Employee {
 	}
 	
 	public void addActivity(Activity activity){
+		if(activities.size()==0){
+			currentActivity=activity;
+		}
 		activities.add(activity);
 		allActivities.add(activity);
 		free=false;
