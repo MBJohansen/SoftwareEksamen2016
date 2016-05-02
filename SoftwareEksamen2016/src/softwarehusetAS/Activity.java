@@ -9,6 +9,7 @@ public class Activity {
 	private Boolean finished=false;
 	private String activityID;
 	private String bananaman;
+	private String bananabatman;
 	
 	
 	public Activity(Date startDate, Date endDate, String description, String activityID){
