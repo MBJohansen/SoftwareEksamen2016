@@ -1,6 +1,6 @@
 package softwarehusetAS;
 
-import java.awt.print.Printable;
+
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,44 @@ public class Project{
 	}
 	
 	public void editActivity(Date newEndTime, Activity activity){
+		newEndTime.setYear(newEndTime.getYear());
 		activity.editEndDate(newEndTime);		
+	}
+	
+	public boolean firstDateAfterSecond(Date first, Date second){
+		if(first.getYear()>second.getYear()){
+			return true;
+		}
+		else if(first.getYear()==second.getYear()){
+			if(first.getMonth()>second.getMonth()){
+				return true;
+			}
+			else if(first.getMonth()==second.getMonth()){
+				if(first.getDate()>second.getDate()){
+					return true;
+				}
+				else if(first.getDate()==second.getDate()){
+					if(first.getHours()>second.getHours()){
+						return true;
+					}
+					else if(first.getHours()==second.getHours()){
+						if(first.getMinutes()>second.getMinutes()){
+							return true;
+						}
+						else if(first.getMinutes()==first.getMinutes()){
+							if(first.getSeconds()>second.getSeconds()){
+								return true;
+							}
+						}
+					}
+				}
+			}
+			
+		}
+		
+		
+		
+		return false;
 	}
 	
 	public boolean assignActivity(List<Employee> employees, String activityID){	
@@ -54,8 +91,10 @@ public class Project{
 		if(!found){
 			return found;
 		}
-		Date currentDate = new Date();
-		if(activity.getEndDate().getTime()<currentDate.getTime()){
+		
+		Date currentDate = new Date ();
+		
+		if(firstDateAfterSecond(currentDate,activity.getEndDate())){
 			return false;
 		}
 		

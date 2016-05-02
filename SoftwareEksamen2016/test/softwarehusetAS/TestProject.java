@@ -96,11 +96,11 @@ public class TestProject {
 		
 		Employee employee2 = new Employee(null, "INIT", null);
 		
-		Date start = new Date(2016, 5, 2);
-		Date end = new Date(2016, 5, 5);
+		Date start = new Date(2014-1900, 4, 2);
+		Date end = new Date(2016-1900,11,2);
+		
 		
 		assertFalse(employee2.createActivity(start,end,"Do something","TODO1"));
-		
 		List<Employee> employeeList = new ArrayList<Employee>();
 		employeeList.add(employee2);
 		
