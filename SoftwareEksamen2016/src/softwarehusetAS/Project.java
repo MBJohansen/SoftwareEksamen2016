@@ -1,7 +1,7 @@
 package softwarehusetAS;
 
 import java.awt.print.Printable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +40,7 @@ public class Project{
 		activity.editEndDate(newEndTime);		
 	}
 	
-	public boolean assignActivity(List<Employee> employees, String activityID){		
+	public boolean assignActivity(List<Employee> employees, String activityID){	
 		boolean success=false;
 		int goodEmployees=0;
 		Activity activity=null;
@@ -54,6 +54,11 @@ public class Project{
 		if(!found){
 			return found;
 		}
+		Date currentDate = new Date();
+		if(activity.getEndDate().getTime()<currentDate.getTime()){
+			return false;
+		}
+		
 		for(int i=0; i<employees.size(); i++){
 			if(!(employees.get(i).viewActivities().size()>=20)){
 				employees.get(i).addActivity(activity);

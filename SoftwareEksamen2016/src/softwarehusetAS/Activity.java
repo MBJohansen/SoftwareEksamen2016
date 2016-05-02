@@ -1,6 +1,6 @@
 package softwarehusetAS;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Activity {
 	private Date startDate;
