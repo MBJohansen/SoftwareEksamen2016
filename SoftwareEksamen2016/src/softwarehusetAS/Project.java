@@ -33,9 +33,20 @@ public class Project{
 		activity.editEndDate(newEndTime);		
 	}
 	
-	public Boolean assignActivity(List<Employee> employees, Activity activity){		
-		Boolean success=false;
+	public boolean assignActivity(List<Employee> employees, String activityID){		
+		boolean success=false;
 		int goodEmployees=0;
+		Activity activity=null;
+		boolean found = false;
+		for(int j=0; j<projectActivities.size(); j++){
+			if(projectActivities.get(j).getID().equals(activityID)){
+				activity=projectActivities.get(j);
+				found=true;
+			}
+		}
+		if(!found){
+			return found;
+		}
 		for(int i=0; i<employees.size(); i++){
 			if(!(employees.get(i).viewActivities().size()>20)){
 				employees.get(i).addActivity(activity);
