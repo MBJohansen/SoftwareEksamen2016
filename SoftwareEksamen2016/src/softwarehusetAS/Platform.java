@@ -8,7 +8,7 @@ public abstract class Platform {
 	private static List<Employee> employees = new ArrayList<Employee>();
 	private static List<Employee> availableEmployees = new ArrayList<Employee>();
 	private static List<Project> projects = new ArrayList<Project>();
-	
+	//test
 	/*public List<ProjectManager> getProjectManagers(){
 		return projectManagers;
 	}*/
