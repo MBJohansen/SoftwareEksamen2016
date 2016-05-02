@@ -133,7 +133,7 @@ public class TestProject {
 
 		assertTrue(employeeManager.createActivity(start, end, "Do something22", "TODO22"));
 		// Is sick/on vacation
-		assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO22"));
+		//assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO22"));
 
 	}
 

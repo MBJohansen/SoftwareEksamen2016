@@ -99,7 +99,19 @@ public class Employee {
 	}
 	
 	public List<Activity> viewActivities(){
+		return allActivities;
+	}
+	
+	public List<Activity> viewActiveActivities(){
 		return activities;
+	}
+	
+	public void endOfWeek (){
+		for(int i=0;i<allActivities.size();i++){
+			if(allActivities.get(i).getFinished()){
+				allActivities.remove(i);
+			}
+		}
 	}
 	
 	public long getActiveTime(String activityID){

@@ -115,6 +115,7 @@ public class Project{
 	
 	public List<Activity> createReport(){
 		List<Activity> finishedActivities = new ArrayList();
+		System.out.println("Description: " + " Finished: ");
 		for(int i=0; i<projectActivities.size(); i++){
 			System.out.println(projectActivities.get(i).getDescription()+" " + projectActivities.get(i).getFinished());
 		if(projectActivities.get(i).getFinished()){

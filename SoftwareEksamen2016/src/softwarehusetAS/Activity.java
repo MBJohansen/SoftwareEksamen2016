@@ -8,6 +8,7 @@ public class Activity {
 	private String description;
 	private Boolean finished=false;
 	private String activityID;
+	private double hoursUsed;
 	
 	
 	
@@ -16,12 +17,21 @@ public class Activity {
 		this.endDate=endDate;
 		this.description=description;
 		this.activityID=activityID;
+		hoursUsed=0;
 	}
 	
 	public void editEndDate(Date endDate){
 		this.endDate=endDate;
 	}
+	
+	public void addHours(double inHours){
+		hoursUsed=hoursUsed+inHours;
+	}
 
+	public double getHours(){
+		return hoursUsed;
+	}
+	
 	public Date getStartDate(){
 	return startDate;
 	}
