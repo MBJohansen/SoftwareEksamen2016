@@ -13,6 +13,9 @@ public class Project{
 	boolean isActive;
 	
 	public Project(List<Employee> projectEmploye, List<Activity> projectActivities, String name){
+		if(projectActivities==null){
+			projectActivities = new ArrayList();
+		}
 		this.projectEmployee=projectEmploye;
 		this.projectActivities=projectActivities;
 		this.name=name;
@@ -52,13 +55,14 @@ public class Project{
 			return found;
 		}
 		for(int i=0; i<employees.size(); i++){
-			if(!(employees.get(i).viewActivities().size()>20)){
+			if(!(employees.get(i).viewActivities().size()>=20)){
 				employees.get(i).addActivity(activity);
 				goodEmployees++;
 			}else{
 				System.out.println(employees.get(i)+" could not be assigned");
 			}
 		}
+		
 		if(goodEmployees==employees.size()){
 			success=true;
 		}	
