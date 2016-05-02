@@ -73,13 +73,11 @@ public class TestProject {
 	// Tests the finishing of an activity
 	@Test
 	public void testEndActivity() {
-
 		
 		Employee employee = new Employee(null, "INIT", null);
 		
 		Date start = new Date(2016, 5, 2);
 		Date end = new Date(2016, 5, 5);
-		
 		
 		Activity activity = new Activity(start,end,"Do something","TODO1");
 		
@@ -91,8 +89,6 @@ public class TestProject {
 		
 		
 	}
-	
-	// HEY! FIX DET NU!!!!
 	
 //	// Tests editing the used time on an activity
 //	@Test
