@@ -85,7 +85,7 @@ public class TestProject {
 		
 		employee.addActivity(activity);
 		
-		assertEquals(1,employee.viewActivities());
+		assertEquals(1,employee.viewActivities().size());
 		
 		employee.endActivity();
 		
