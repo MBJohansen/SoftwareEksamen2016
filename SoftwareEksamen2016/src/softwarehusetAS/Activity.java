@@ -8,6 +8,8 @@ public class Activity {
 	private String description;
 	private Boolean finished=false;
 	private String activityID;
+	private String bananaman;
+	
 	
 	public Activity(Date startDate, Date endDate, String description, String activityID){
 		this.startDate=startDate;
