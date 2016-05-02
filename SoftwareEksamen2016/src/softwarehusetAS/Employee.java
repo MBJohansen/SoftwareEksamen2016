@@ -133,4 +133,10 @@ public class Employee {
 		getProjectInChargeOf().setFinished();
 		this.isProjectManager=false;
 	}
+	
+	public void createActivity(Date startDate, Date endDate, String description, String activityID){
+		if(isProjectManager){
+			Activity newActivity = new Activity(startDate, endDate, description, activityID);
+		}
+	}
 }
