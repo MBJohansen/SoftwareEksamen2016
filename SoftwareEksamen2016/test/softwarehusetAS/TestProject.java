@@ -34,7 +34,7 @@ public class TestProject {
 
 		assertTrue(employee.isProjectManager());
 	}
-
+	
 	// Tests the finishing of a project
 	@Test
 	public void testEndProject() {
@@ -86,19 +86,186 @@ public class TestProject {
 		employee.endActivity();
 
 	}
-
+	
+	//Use Case 1
+	
+	//Non-manager failing to create an activity
 	@Test
-	public void useCase1() {
-
-		Employee employeeManager = new Employee(null, "INIT", null);
-
-		employeeManager.makeManager("Project1");
-
-		Employee employee2 = new Employee(null, "INIT", null);
+	public void testEmployeeCreateActivity() {
+		Employee employee = new Employee(null, "INIT", null);
 
 		Date start = new Date(2014 - 1900, 4, 2);
 		Date end = new Date(2016 - 1900, 11, 2);
+		
+		assertFalse(employee.createActivity(start, end, "Do something", "TODO1"));
+	}
+	
+	//Manager creating an activity and assigning it
+	@Test
+	public void testManagerCreateAndAssignActivity() {
+		Employee employeeManager = new Employee(null, "INIT", null);
 
+		Date start = new Date(2014 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+		
+		employeeManager.makeManager("Project1");
+		
+		Employee employee2 = new Employee(null, "AAAB", null);
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+		
+		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
+		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
+	}
+	
+	//Manager failing to create an activity do to wrong dates
+	@Test
+	public void testManagerCreateActivityFail() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+
+		Date end = new Date(2014 - 1900, 4, 2);
+		Date start = new Date(2016 - 1900, 11, 2);
+		
+		employeeManager.makeManager("Project1");
+		
+		Employee employee2 = new Employee(null, "AAAB", null);
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+		
+		assertFalse(employeeManager.createActivity(start, end, "Do something", "TODO"));
+	}
+	
+	//Assigning an activity to several employees
+	@Test
+	public void testManagerAssignActivity() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+
+		Date start = new Date(2014 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+		
+		employeeManager.makeManager("Project1");
+		
+		Employee employee2 = new Employee(null, "AAAB", null);
+		Employee employee3 = new Employee(null, "AAAC", null);
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+		employeeList.add(employee3);
+		
+		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
+		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
+	}
+	
+	//Too many activities
+	@Test
+	public void testManagerAssignActivityFail() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+
+		Date start = new Date(2014 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+		
+		employeeManager.makeManager("Project1");
+		
+		Employee employee2 = new Employee(null, "AAAB", null);
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+		
+		for (int i = 1; i <= 20; i++) {
+			assertTrue(employeeManager.createActivity(start, end, "Do something" + i, "TODO" + i));
+			assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO" + i));
+		}
+		
+		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
+		assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
+	}
+	
+	//Unavailable
+	@Test
+	public void testManagerFailAssignActivity2() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+
+		Date start = new Date(2014 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+		
+		employeeManager.makeManager("Project1");
+		
+		Employee employee2 = new Employee(null, "INIT", null);
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+		
+		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
+		assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
+	}
+	
+	//Status report
+	@Test
+	public void testCreateStatusReport() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+		
+		employeeManager.makeManager("Project1");
+		
+		Date start = new Date(2014 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+		
+		Employee employee2 = new Employee(null, "INIT", null);
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+		
+		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
+		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
+		
+		employee2.endActivity();
+		employeeManager.getProjectInChargeOf().createReport();
+	}
+	
+	//Fail to assign do to vacation
+	@Test
+	public void testVacation() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+		
+		employeeManager.makeManager("Project1");
+		
+		Date start = new Date(2014 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+		
+		Employee employee2 = new Employee(null, "AAAB", null);
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+
+		assertTrue(employee2.isAvailable());
+
+		employee2.setAvailable(false);
+
+		assertFalse(employee2.isAvailable());
+
+		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
+		// Is sick/on vacation
+		assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
+	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@Test
+	public void useCase1() {
+		
+		Employee employeeManager = new Employee(null, "INIT", null);
+		
+		employeeManager.makeManager("Project1");
+		
+		Employee employee2 = new Employee(null, "INIT", null);
+		
+		Date start = new Date(2014 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+		
 		// Testing that a non-manager cannot create the activity
 		assertFalse(employee2.createActivity(start, end, "Do something", "TODO1"));
 
