@@ -19,6 +19,10 @@ public class Project{
 		isActive=true;
 	}
 	
+	public List <Activity> getActivities(){
+		return projectActivities;
+	}
+	
 	public String getName() {
 		return name;
 	}

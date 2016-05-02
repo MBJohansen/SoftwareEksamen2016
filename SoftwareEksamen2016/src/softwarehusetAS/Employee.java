@@ -136,6 +136,12 @@ public class Employee {
 	
 	public boolean createActivity(Date startDate, Date endDate, String description, String activityID){
 		if(isProjectManager){
+			for(int i=0;i<currentProject.getActivities().size();i++){
+				if(currentProject.getActivities().get(i).getID().equals(activityID)){
+					return false;
+				}
+			}
+			
 			currentProject.createActivity(startDate, endDate, description, activityID);
 			return true;
 		}
