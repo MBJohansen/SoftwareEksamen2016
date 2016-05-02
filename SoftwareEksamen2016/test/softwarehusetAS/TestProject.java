@@ -53,14 +53,11 @@ public class TestProject {
 	@Test
 	public void testAssignActivity() {
 		
-
-		
 		Employee employee = new Employee(null, "INIT", null);
 		
 		assertTrue(employee.isFree());
 		Date start = new Date(2016, 5, 2);
 		Date end = new Date(2016, 5, 5);
-
 		
 		Activity activity = new Activity(start,end,"Do something","TODO1");
 		
@@ -89,6 +86,45 @@ public class TestProject {
 		
 		
 	}
+	
+	@Test
+	public void useCase1() {
+		
+		Employee employeeManager = new Employee(null, "INIT", null);
+		
+		employeeManager.makeManager("Project1");
+		
+		Employee employee2 = new Employee(null, "INIT", null);
+		
+		Date start = new Date(2016, 5, 2);
+		Date end = new Date(2016, 5, 5);
+		
+		assertFalse(employee2.createActivity(start,end,"Do something","TODO1"));
+		
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+		
+		for(int i = 1; i<= 20; i++) {
+			assertTrue(employeeManager.createActivity(start,end,"Do something" + i,"TODO" + i));
+			assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList,"TODO"+i));
+		}
+		
+		assertFalse(employeeManager.createActivity(start,end,"Do something20","TODO20"));
+		
+		assertTrue(employeeManager.createActivity(start,end,"Do something21","TODO21"));
+		//Too many activities
+		assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList,"TODO21"));
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 //	// Tests editing the used time on an activity
 //	@Test
