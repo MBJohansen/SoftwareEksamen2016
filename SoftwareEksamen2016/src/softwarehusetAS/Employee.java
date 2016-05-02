@@ -1,6 +1,7 @@
 package softwarehusetAS;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.activity.ActivityCompletedException;
@@ -16,6 +17,9 @@ public class Employee {
 	private Boolean isProjectManager = false;
 	
 	public Employee(List<Activity> activities, String ID, Project currentProject){
+		
+		
+		
 		this.ID=ID;
 		this.activities=activities;
 		this.allActivities=activities;
