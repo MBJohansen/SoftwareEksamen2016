@@ -125,11 +125,11 @@ public class TestProject {
 		List<Employee> employeeList2 = new ArrayList<Employee>();
 		employeeList.add(employee3);
 
-		assertTrue(employee3.isAvailable);
+		assertTrue(employee3.isAvailable());
 
 		employee3.setAvailable(false);
 
-		assertFalse(employee3.isAvailable);
+		assertFalse(employee3.isAvailable());
 
 		assertTrue(employeeManager.createActivity(start, end, "Do something22", "TODO22"));
 		// Is sick/on vacation

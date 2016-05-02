@@ -14,7 +14,8 @@ public class Employee {
 	private Activity currentActivity;
 	private String ID;
 	private Project currentProject;
-	private Boolean isProjectManager = false;
+	private boolean isProjectManager = false;
+	private boolean available=true;
 	
 	public Employee(List<Activity> activities, String ID, Project currentProject){
 		
@@ -148,5 +149,13 @@ public class Employee {
 			return true;
 		}
 		return false;
+	}
+
+	public boolean isAvailable() {
+		return available;
+	}
+	
+	public void setAvailable(boolean avail){
+		this.available=avail;
 	}
 }
