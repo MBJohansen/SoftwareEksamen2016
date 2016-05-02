@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.After;
@@ -47,27 +48,37 @@ public class TestProject {
 		assertFalse(Platform.getProject("Project1").isActive());
 	}
 	
-//	// Tests the creation of an activity with an estimated time (begin and end date)
-//	@Test
-//	public void testCreateActivity() {
-//		Employee employee = new Employee(null, "INIT", null);
-//		
-//	}
-//	
-//	// Tests the projectmanager assigning an activity
-//	@Test
-//	public void testAssignActivity() {
-//		Employee employee = new Employee(null, "INIT", null);
-//		
-//	}
-//	
-//	// Tests the finishing of an activity
-//	@Test
-//	public void testEndActivity() {
-//		Employee employee = new Employee(null, "INIT", null);
-//		
-//	}
-//	
+	// Tests the creation of an activity and the projectmanager assigning an activity
+	@Test
+	public void testAssignActivity() {
+		Employee employee = new Employee(null, "INIT", null);
+		
+		assertTrue(employee.isFree());
+		
+		Activity activity = new Activity(,,"Do something","TODO1");
+		
+		employee.addActivity(activity);
+		
+		assertFalse(employee.isFree());
+		
+	}
+	
+	// Tests the finishing of an activity
+	@Test
+	public void testEndActivity() {
+		Employee employee = new Employee(null, "INIT", null);
+		
+		Activity activity = new Activity(,,"Do something","TODO1");
+		
+		employee.addActivity(activity);
+		
+		assertEquals(1,employee.getActivities());
+		
+		employee.endActivity();
+		
+		
+	}
+	
 //	// Tests editing the used time on an activity
 //	@Test
 //	public void testEditActivityUsedTime() {
