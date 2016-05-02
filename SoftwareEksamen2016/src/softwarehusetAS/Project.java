@@ -12,11 +12,11 @@ public class Project{
 	List<Activity> projectActivities;
 	boolean isActive;
 	
-	public Project(List<Employee> projectEmploye, List<Activity> projectActivities, String name){
+	public Project(List<Employee> projectEmployee, List<Activity> projectActivities, String name){
 		if(projectActivities==null){
 			projectActivities = new ArrayList();
 		}
-		this.projectEmployee=projectEmploye;
+		this.projectEmployee=projectEmployee;
 		this.projectActivities=projectActivities;
 		this.name=name;
 		isActive=true;
