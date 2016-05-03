@@ -209,62 +209,11 @@ public class TestProject {
 		assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
 	}
 	
-
-	
-	@Test
-	public void useCase1() {
-		
-		Employee employeeManager = new Employee(null, "INIT", null);
-		
-		employeeManager.makeManager("Project1");
-		
-		Employee employee2 = new Employee(null, "INIT", null);
-		
-		Date start = new Date(2014 - 1900, 4, 2);
-		Date end = new Date(2016 - 1900, 11, 2);
-		
-		// Testing that a non-manager cannot create the activity
-		assertFalse(employee2.createActivity(start, end, "Do something", "TODO1"));
-
-		// Testing that you cannot allocate more than 20 activities to a worker
-		List<Employee> employeeList = new ArrayList<Employee>();
-		employeeList.add(employee2);
-
-		for (int i = 1; i <= 20; i++) {
-			assertTrue(employeeManager.createActivity(start, end, "Do something" + i, "TODO" + i));
-			assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO" + i));
-		}
-
-		assertFalse(employeeManager.createActivity(start, end, "Do something20", "TODO20"));
-		assertTrue(employeeManager.createActivity(start, end, "Do something21", "TODO21"));
-		// Too many activities
-		assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO21"));
-
-		// Creating report
-		employee2.endActivity();
-		employeeManager.getProjectInChargeOf().createReport();
-
-		// Testing Sickness / Vacation status
-		Employee employee3 = new Employee(null, "INIT", null);
-		List<Employee> employeeList2 = new ArrayList<Employee>();
-		employeeList.add(employee3);
-
-		assertTrue(employee3.isAvailable());
-
-		employee3.setAvailable(false);
-
-		assertFalse(employee3.isAvailable());
-
-		assertTrue(employeeManager.createActivity(start, end, "Do something22", "TODO22"));
-		// Is sick/on vacation
-		//assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO22"));
-
-	}
 	
 	
-	// Use Case 8
+	//Use Case 8
 	
-	// Tests the creation of a project and assigning a projectmanager
+	//Tests the creation of a project and assigning a projectmanager
 	@Test
 	public void testMakeManager() {
 		Employee employee = new Employee(null, "INIT", null);
@@ -280,10 +229,13 @@ public class TestProject {
 		assertTrue(employee.isProjectManager());
 	}
 	
+	//Test for creating an activity is done under Use Case 1
 	
-	
-	
-	
+	//Manager searching for available/free employees
+	@Test
+	public void testSearchAvailableEmployees() {
+		
+	}
 	
 	
 	
