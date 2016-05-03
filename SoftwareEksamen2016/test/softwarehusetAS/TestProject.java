@@ -289,6 +289,10 @@ public class TestProject {
 		employee4.setAvailable(false);
 		
 		assertEquals(2,Platform.getAvailableEmployees().size());
+		
+		for(int i = 0; i < Platform.getAvailableEmployees().size(); i++) {
+			employeeManager.getProjectInChargeOf().addEmployee(Platform.getAvailableEmployees().get(i));
+		}
 	}
 	
 	
