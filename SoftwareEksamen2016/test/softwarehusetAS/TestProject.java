@@ -319,7 +319,8 @@ public class TestProject {
 		//employee7 is the latest to be done
 		employeeList.remove(employee6);
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO3");
-		
+		assertEquals(2,Platform.getSuitableEmployees(2).size());
+
 		for(int i = 0; i < 2; i++) {
 			employeeManager.getProjectInChargeOf().addEmployee(Platform.getSuitableEmployees(2).get(i));
 		}

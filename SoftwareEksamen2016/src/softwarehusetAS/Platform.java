@@ -31,8 +31,9 @@ public abstract class Platform {
 		
 		if(finalList.size()>n){
 			for(int i=0;i<finalList.size()-n;i++){
-				finalList.remove(0);
+				finalList.remove(finalList.size()-1);
 			}
+			finalList.remove(finalList.size()-1);
 			return finalList;
 		}
 		while(finalList.size()<n&&numberIter>0){
@@ -56,7 +57,6 @@ public abstract class Platform {
 					}
 				}
 				if (firstEnd==0 || latestEndForEmp<firstEnd){
-					finalList.add(employees.get(i));
 					firstEnd=latestEndForEmp;
 					skips.set(skips.size(), i);
 				}}
@@ -65,10 +65,16 @@ public abstract class Platform {
 			}else{skip=false;}
 				
 			}
-			
+			finalList.add(employees.get(skips.get(skips.size())));
+
 		numberIter--;	
 		}
-		
+		if(finalList.size()>n){
+			for(int i=0;i<finalList.size()-n;i++){
+				finalList.remove(finalList.size()-1);
+				
+			}
+		}
 		
 		
 		return finalList;
