@@ -16,6 +16,7 @@ public class Employee {
 	private Project currentProject;
 	private boolean isProjectManager = false;
 	private boolean available=true;
+	private double hoursWorked=0;
 	
 	public Employee(List<Activity> activities, String ID, Project currentProject){
 		
@@ -37,6 +38,20 @@ public class Employee {
 		this.currentProject=currentProject;
 		Platform.editEmployee(this);
 
+	}
+	
+	public boolean onVacation (){
+		for(int i=0;i<activities.size();i++){
+			if(activities.get(i).getID().equals("VAC")){
+				Date currentDate = new Date();
+				if(currentDate.after(activities.get(i).getStartDate()) && currentDate.before(activities.get(i).getEndDate())){
+					return true;
+				}
+				
+			}
+		}
+			
+		return false;
 	}
 	
 	public void makeManager(String projectName){
@@ -66,6 +81,17 @@ public class Employee {
 		free=false;
 		currentActivity=activities.get(0);
 		}
+	}
+	
+	public void addVacation(Date start, Date end){
+		createActivity(start,end,"Vacation","VAC");
+		
+	}
+	
+	public void addHours(double hours,Activity activity){
+		hoursWorked=hoursWorked+hours;
+		activity.addHours(hours);
+		
 	}
 	
 	public void addActivity(Activity activity){
@@ -99,7 +125,19 @@ public class Employee {
 	}
 	
 	public List<Activity> viewActivities(){
+		return allActivities;
+	}
+	
+	public List<Activity> viewActiveActivities(){
 		return activities;
+	}
+	
+	public void endOfWeek (){
+		for(int i=0;i<allActivities.size();i++){
+			if(allActivities.get(i).getFinished()){
+				allActivities.remove(i);
+			}
+		}
 	}
 	
 	public long getActiveTime(String activityID){
