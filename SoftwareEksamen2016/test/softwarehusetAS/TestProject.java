@@ -172,7 +172,7 @@ public class TestProject {
 		Date start = new Date(2014 - 1900, 4, 2);
 		Date end = new Date(2016 - 1900, 11, 2);
 		
-		Employee employee2 = new Employee(null, "INIT", null);
+		Employee employee2 = new Employee(null, "AAAB", null);
 		List<Employee> employeeList = new ArrayList<Employee>();
 		employeeList.add(employee2);
 		
@@ -279,9 +279,9 @@ public class TestProject {
 	@Test
 	public void testSearchAvailableEmployees() {
 		Employee employeeManager = new Employee(null, "INIT", null);
-		Employee employee2 = new Employee(null, "INIT", null);
-		Employee employee3 = new Employee(null, "INIT", null);
-		Employee employee4 = new Employee(null, "INIT", null);
+		Employee employee2 = new Employee(null, "AAAB", null);
+		Employee employee3 = new Employee(null, "AAAC", null);
+		Employee employee4 = new Employee(null, "AAAD", null);
 		
 		employeeManager.makeManager("Project1");
 		
