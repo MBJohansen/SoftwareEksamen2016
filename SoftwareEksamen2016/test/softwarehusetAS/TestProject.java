@@ -210,6 +210,50 @@ public class TestProject {
 	}
 	
 	
+	//Use Case 2
+	@Test
+	public void test () {
+		
+	}
+	
+	@Test
+	public void test () {
+		
+	}
+	
+	
+	
+	//Use Case 3
+	@Test
+	public void test () {
+		
+	}
+	
+	@Test
+	public void test () {
+		
+	}
+	
+	
+	
+	
+	//Use Case 4
+	
+	
+	
+	
+	//Use Case 5
+	
+	
+	
+	
+	//Use Case 6
+	
+	
+	
+	//Use Case 7
+	
+	
 	
 	//Use Case 8
 	
