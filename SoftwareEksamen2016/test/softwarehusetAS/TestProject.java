@@ -139,7 +139,7 @@ public class TestProject {
 		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
 	}
 	
-	//Too many activities
+	//Manager failing to assign due to too many activities
 	@Test
 	public void testManagerAssignActivityFail() {
 		Employee employeeManager = new Employee(null, "INIT", null);
@@ -180,12 +180,13 @@ public class TestProject {
 		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
 		
 		employee2.endActivity();
-		employeeManager.getProjectInChargeOf().createReport();
+		
+		assertEquals(1,employeeManager.getProjectInChargeOf().createReport());
 	}
 	
-	//Fail to assign due to sickness
+	//Manager fail to assign due to sickness
 	@Test
-	public void testManagerAssignFail() {
+	public void testManagerAssignActivityFail2() {
 		Employee employeeManager = new Employee(null, "INIT", null);
 		
 		employeeManager.makeManager("Project1");
