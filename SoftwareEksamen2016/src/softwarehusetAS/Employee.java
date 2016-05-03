@@ -198,6 +198,13 @@ public class Employee {
 	}
 	
 	public void setAvailable(boolean avail){
+		if(free&&!avail){
+			free=false;
+		}else{
+			if(this.activities.size()==0&&avail){
+				free=true;
+			}
+		}
 		this.available=avail;
 	}
 }

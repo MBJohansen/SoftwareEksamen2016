@@ -19,6 +19,18 @@ public abstract class Platform {
 	}
 	
 	public static List<Employee> getAvailableEmployees(){
+		List <Employee> outputList = new ArrayList<Employee>();
+		
+		for(int i=0;i<employees.size();i++){
+			if(employees.get(i).isAvailable()&&employees.get(i).viewActivities().size()<20){
+				outputList.add(employees.get(i));
+			}
+		}
+		
+		return outputList;
+	}
+	
+	public static List<Employee> getFreeEmployees(){
 		return availableEmployees;
 	}
 	
