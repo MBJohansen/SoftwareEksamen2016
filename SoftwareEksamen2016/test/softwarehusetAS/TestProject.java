@@ -231,7 +231,7 @@ public class TestProject {
 	
 	//Test for creating an activity is done under Use Case 1
 	
-	//Manager searching for available/free employees
+	//Manager searching for available employees
 	@Test
 	public void testSearchAvailableEmployees() {
 		
