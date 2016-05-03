@@ -18,22 +18,6 @@ public class TestProject {
 	public void doReset() {
 		Platform.reset();
 	}
-
-	// Tests the creation of a project and assigning a projectmanager
-	@Test
-	public void testMakeManager() {
-		Employee employee = new Employee(null, "INIT", null);
-
-		assertFalse(employee.isProjectManager());
-
-		assertEquals(0, Platform.getProjects().size());
-
-		employee.makeManager("Project1");
-
-		assertEquals(1, Platform.getProjects().size());
-
-		assertTrue(employee.isProjectManager());
-	}
 	
 	// Tests the finishing of a project
 	@Test
@@ -118,7 +102,7 @@ public class TestProject {
 		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
 	}
 	
-	//Manager failing to create an activity do to wrong dates
+	//Manager failing to create an activity due to wrong dates
 	@Test
 	public void testManagerCreateActivityFail() {
 		Employee employeeManager = new Employee(null, "INIT", null);
@@ -217,7 +201,7 @@ public class TestProject {
 		employeeManager.getProjectInChargeOf().createReport();
 	}
 	
-	//Fail to assign do to vacation
+	//Fail to assign due to sickness
 	@Test
 	public void testVacation() {
 		Employee employeeManager = new Employee(null, "INIT", null);
@@ -238,7 +222,7 @@ public class TestProject {
 		assertFalse(employee2.isAvailable());
 
 		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
-		// Is sick/on vacation
+		// Is sick
 		assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
 	}
 	
@@ -293,7 +277,41 @@ public class TestProject {
 		//assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO22"));
 
 	}
+	
+	
+	// Use Case 8
+	
+	// Tests the creation of a project and assigning a projectmanager
+	@Test
+	public void testMakeManager() {
+		Employee employee = new Employee(null, "INIT", null);
 
+		assertFalse(employee.isProjectManager());
+		
+		assertEquals(0, Platform.getProjects().size());
+
+		employee.makeManager("Project1");
+
+		assertEquals(1, Platform.getProjects().size());
+
+		assertTrue(employee.isProjectManager());
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// // Tests editing the used time on an activity
 	// @Test
 	// public void testEditActivityUsedTime() {
