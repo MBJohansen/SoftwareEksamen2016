@@ -121,7 +121,7 @@ public class TestProject {
 	
 	//Assigning an activity to several employees
 	@Test
-	public void testManagerAssignActivity() {
+	public void testManagerAssignActivitySeveral() {
 		Employee employeeManager = new Employee(null, "INIT", null);
 
 		Date start = new Date(2014 - 1900, 4, 2);
@@ -282,16 +282,46 @@ public class TestProject {
 		Employee employee2 = new Employee(null, "AAAB", null);
 		Employee employee3 = new Employee(null, "AAAC", null);
 		Employee employee4 = new Employee(null, "AAAD", null);
+		Employee employee5 = new Employee(null, "AAAE", null);
+		Employee employee6 = new Employee(null, "AAAF", null);
+		Employee employee7 = new Employee(null, "AAAG", null);
 		
 		employeeManager.makeManager("Project1");
 		
+		//employee2 and 4 are unavailable
 		employee2.setAvailable(false);
 		employee4.setAvailable(false);
 		
-		assertEquals(2,Platform.getAvailableEmployees().size());
+		Date start1 = new Date(2014 - 1900, 4, 2);
+		Date end1 = new Date(2015 - 1900, 6, 2);
+		
+		Date start2 = new Date(2014 - 1900, 5, 2);
+		Date end2 = new Date(2015 - 1900, 11, 2);
+		
+		Date start3 = new Date(2014 - 1900, 8, 2);
+		Date end3 = new Date(2015 - 1900, 12, 2);
+		
+		employeeManager.createActivity(start1, end1, "First", "TODO1");
+		employeeManager.createActivity(start2, end2, "Second", "TODO2");
+		employeeManager.createActivity(start3, end3, "Third", "TODO3");
+		
+		//employee5 is the first to be done
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee5);
+		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO1");
+		
+		//employee6 is done later
+		employeeList.remove(employee5);
+		employeeList.add(employee6);
+		employeeList.add(employee7);
+		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO2");
+		
+		//employee7 is the latest to be done
+		employeeList.remove(employee6);
+		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO3");
 		
 		for(int i = 0; i < Platform.getAvailableEmployees().size(); i++) {
-			employeeManager.getProjectInChargeOf().addEmployee(Platform.getAvailableEmployees().get(i));
+			employeeManager.getProjectInChargeOf().addEmployee(Platform.getSuitableEmployees(2).get(i));
 		}
 		
 		assertEquals(2,employeeManager.getProjectInChargeOf().getEmployees().size());
