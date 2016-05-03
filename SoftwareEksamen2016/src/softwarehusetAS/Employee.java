@@ -55,11 +55,15 @@ public class Employee {
 	}
 	
 	public void makeManager(String projectName){
+		
+		if(isProjectManager){
+			System.out.println(this.ID + " is already a project manager for " + this.currentProject.name);
+		}else{
 		isProjectManager=true;
 		Project newProject = new Project(null, null,projectName);
 		currentProject=newProject;
 		Platform.editProjects(newProject);
-	}
+	}}
 	
 	public boolean isProjectManager() {
 		return isProjectManager;
@@ -174,7 +178,7 @@ public class Employee {
 	}
 	
 	public boolean createActivity(Date startDate, Date endDate, String description, String activityID){
-		
+		if(startDate.after(endDate)){return false;}
 
 		if(isProjectManager){
 			for(int i=0;i<currentProject.getActivities().size();i++){

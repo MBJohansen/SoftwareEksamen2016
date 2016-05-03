@@ -10,6 +10,8 @@ public class Project{
 	String name;
 	List<Employee> projectEmployee;
 	List<Activity> projectActivities;
+	Date endDate;
+	Date startDate;
 	boolean isActive;
 	
 	public Project(List<Employee> projectEmployee, List<Activity> projectActivities, String name){
@@ -99,9 +101,10 @@ public class Project{
 		}
 		
 		for(int i=0; i<employees.size(); i++){
-			if(!(employees.get(i).viewActivities().size()>=20)){
+			if(!(employees.get(i).viewActivities().size()>=20)&&employees.get(i).isAvailable()){
 				employees.get(i).addActivity(activity);
 				goodEmployees++;
+				projectEmployee.add(employees.get(i));
 			}else{
 				System.out.println(employees.get(i)+" could not be assigned");
 			}

@@ -140,7 +140,7 @@ public class Test2 {
 	// Use Case 2
 	
 	@Test
-	public void test
+	public void test() {}
 	
 	
 	
