@@ -244,16 +244,6 @@ public class TestProject {
 	
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Test
 	public void useCase1() {
 		
