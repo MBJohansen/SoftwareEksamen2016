@@ -20,6 +20,59 @@ public abstract class Platform {
 		}
 	}
 	
+	public static List<Employee> getSuitableEmployees(int n){
+		if(n>employees.size()){
+			System.out.println("Not enough employees to get "+ n+ " suitable ones");
+			return null;
+		}
+		List <Employee> finalList = getAvailableEmployees();
+		List <Integer> skips = new ArrayList();
+		
+		if(finalList.size()>n){
+			for(int i=0;i<finalList.size()-n;i++){
+				finalList.remove(0);
+			}
+			return finalList;
+		}
+		while(finalList.size()<n){
+			long firstEnd=0;
+			long latestEndForEmp=0;
+			skips.add(1);
+			boolean skip=false;
+			
+			for(int i=0;i<employees.size();i++){
+				for(int k=0;k<skips.size();k++){
+					if(skips.get(k)==i){
+						skip=true;
+					} 
+				}
+				if(!skip){
+				if(employees.get(i).isAvailable()&&employees.get(i).viewActivities().size()<20){
+				for(int j=0;j<employees.get(i).viewActiveActivities().size();j++){
+					latestEndForEmp=0;
+					if (employees.get(i).viewActiveActivities().get(j).getEndDate().getTime()>latestEndForEmp){
+						latestEndForEmp=employees.get(i).viewActiveActivities().get(j).getEndDate().getTime();
+					}
+				}
+				if (firstEnd==0 || latestEndForEmp<firstEnd){
+					finalList.add(employees.get(i));
+					firstEnd=latestEndForEmp;
+					skips.set(skips.size(), i);
+				}}
+				
+				
+			}else{skip=false;}
+				
+			}
+			
+			
+		}
+		
+		
+		
+		return finalList;
+	}
+	
 	public static List<Employee> getEmployees(){
 		return employees;
 	}
