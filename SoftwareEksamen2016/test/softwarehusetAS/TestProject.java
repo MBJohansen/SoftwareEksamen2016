@@ -278,7 +278,17 @@ public class TestProject {
 	//Manager searching for available employees
 	@Test
 	public void testSearchAvailableEmployees() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+		Employee employee2 = new Employee(null, "INIT", null);
+		Employee employee3 = new Employee(null, "INIT", null);
+		Employee employee4 = new Employee(null, "INIT", null);
 		
+		employeeManager.makeManager("Project1");
+		
+		employee2.setAvailable(false);
+		employee4.setAvailable(false);
+		
+		assertEquals(2,Platform.getAvailableEmployees());
 	}
 	
 	
