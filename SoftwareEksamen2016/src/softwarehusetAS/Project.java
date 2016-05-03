@@ -155,4 +155,8 @@ public class Project{
 		isActive=false;
 	}
 	
+	public List<Employee> getEmployees() {
+		return projectEmployee;
+	}
+	
 }
