@@ -181,7 +181,7 @@ public class TestProject {
 		
 		employee2.endActivity();
 		
-		assertEquals(1,employeeManager.getProjectInChargeOf().createReport());
+		assertEquals(1,employeeManager.getProjectInChargeOf().createReport().size());
 	}
 	
 	//Manager fail to assign due to sickness
@@ -288,7 +288,7 @@ public class TestProject {
 		employee2.setAvailable(false);
 		employee4.setAvailable(false);
 		
-		assertEquals(2,Platform.getAvailableEmployees());
+		assertEquals(2,Platform.getAvailableEmployees().size());
 	}
 	
 	
