@@ -25,6 +25,7 @@ public abstract class Platform {
 			System.out.println("Not enough employees to get "+ n+ " suitable ones");
 			return null;
 		}
+		int numberIter=n;
 		List <Employee> finalList = getAvailableEmployees();
 		List <Integer> skips = new ArrayList();
 		
@@ -34,7 +35,7 @@ public abstract class Platform {
 			}
 			return finalList;
 		}
-		while(finalList.size()<n){
+		while(finalList.size()<n&&numberIter>0){
 			long firstEnd=0;
 			long latestEndForEmp=0;
 			skips.add(1);
@@ -65,7 +66,7 @@ public abstract class Platform {
 				
 			}
 			
-			
+		numberIter--;	
 		}
 		
 		
