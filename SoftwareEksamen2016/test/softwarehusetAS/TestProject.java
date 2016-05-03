@@ -212,12 +212,12 @@ public class TestProject {
 	
 	//Use Case 2
 	@Test
-	public void test () {
+	public void test4 () {
 		
 	}
 	
 	@Test
-	public void test () {
+	public void test5 () {
 		
 	}
 	
@@ -225,12 +225,12 @@ public class TestProject {
 	
 	//Use Case 3
 	@Test
-	public void test () {
+	public void test6 () {
 		
 	}
 	
 	@Test
-	public void test () {
+	public void test7 () {
 		
 	}
 	
