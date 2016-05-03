@@ -321,7 +321,7 @@ public class TestProject {
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO3");
 		assertEquals(2,Platform.getSuitableEmployees(2).size());
 
-		for(int i = 0; i < 2; i++) {
+		for(int i = 0; i < Platform.getSuitableEmployees(2).size(); i++) {
 			employeeManager.getProjectInChargeOf().addEmployee(Platform.getSuitableEmployees(2).get(i));
 		}
 		
