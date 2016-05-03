@@ -320,7 +320,7 @@ public class TestProject {
 		employeeList.remove(employee6);
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO3");
 		
-		for(int i = 0; i < Platform.getAvailableEmployees().size(); i++) {
+		for(int i = 0; i < 2; i++) {
 			employeeManager.getProjectInChargeOf().addEmployee(Platform.getSuitableEmployees(2).get(i));
 		}
 		
