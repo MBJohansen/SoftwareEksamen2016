@@ -14,6 +14,12 @@ public abstract class Platform {
 		return projectManagers;
 	}*/
 	
+	public static void endOfWeek(){
+		for(int i=0;i<employees.size();i++){
+			employees.get(i).endOfWeek();
+		}
+	}
+	
 	public static List<Employee> getEmployees(){
 		return employees;
 	}
