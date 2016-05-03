@@ -18,6 +18,9 @@ public class Project{
 		if(projectActivities==null){
 			projectActivities = new ArrayList();
 		}
+		if(projectEmployee==null){
+			projectEmployee = new ArrayList();
+		}
 		this.projectEmployee=projectEmployee;
 		this.projectActivities=projectActivities;
 		this.name=name;
