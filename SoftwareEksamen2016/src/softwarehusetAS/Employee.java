@@ -87,9 +87,16 @@ public class Employee {
 		}
 	}
 	
-	public void addVacation(Date start, Date end){
-		createActivity(start,end,"Vacation","VAC");
-		
+	public boolean addVacation(Date start, Date end){
+		if(start.before(new Date())){
+		return false;
+		}else{
+			
+		if(createActivity(start,end,"Vacation","VAC")){
+			return true;
+		}
+		return false;
+		}
 	}
 	
 	public void addHours(double hours,Activity activity){
