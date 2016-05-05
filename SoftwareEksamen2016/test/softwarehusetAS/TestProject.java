@@ -233,7 +233,14 @@ public class TestProject {
 	//Searching for help
 	@Test
 	public void testSearchHelp() {
+		Employee employeeManager = new Employee(null, "INIT", null);
 		
+		Date start = new Date(2016 - 1900, 5, 2);
+		Date end = new Date(2016 - 1900, 5, 5);
+		
+		employeeManager.createActivity(start, end, "Do something", "TODO");
+		
+		assertTrue(employeeManager.SearchHelp("TODO"));
 	}
 	
 	//Fails because of no available employees
