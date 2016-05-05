@@ -93,8 +93,15 @@ public class Employee {
 	}
 	
 	public void addHours(double hours,Activity activity){
-		hoursWorked=hoursWorked+hours;
-		activity.addHours(hours);
+		double hourCheck=(hours*10)/5;
+		if(hourCheck==Math.ceil(hourCheck)){
+			hoursWorked=hoursWorked+hours;
+			activity.addHours(hours);
+		}else{
+			System.out.println("Please limit the hour logging to half hour increments");
+		}
+		
+		
 		
 	}
 	
@@ -183,13 +190,16 @@ public class Employee {
 		if(isProjectManager){
 			for(int i=0;i<currentProject.getActivities().size();i++){
 				if(currentProject.getActivities().get(i).getID().equals(activityID)){
+					Platform.update();
 					return false;
 				}
 			}
 			
 			currentProject.createActivity(startDate, endDate, description, activityID);
+			Platform.update();
 			return true;
 		}
+		Platform.update();
 		return false;
 	}
 
