@@ -234,6 +234,8 @@ public class TestProject {
 	@Test
 	public void testSearchHelp() {
 		Employee employeeManager = new Employee(null, "INIT", null);
+		Employee employee2 = new Employee(null, "AAAB", null);
+		Employee employee3 = new Employee(null, "AAAC", null);
 		
 		Date start = new Date(2016 - 1900, 5, 2);
 		Date end = new Date(2016 - 1900, 5, 5);
