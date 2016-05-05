@@ -244,7 +244,12 @@ public class TestProject {
 		
 		employeeManager.createActivity(start, end, "Do something", "TODO");
 		
-		assertTrue(employeeManager.SearchHelp("TODO"));
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+		
+		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
+		
+		assertTrue(employee2.SearchHelp("TODO"));
 	}
 	
 	//Fails because of no available employees
