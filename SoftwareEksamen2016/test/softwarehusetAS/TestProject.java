@@ -285,8 +285,8 @@ public class TestProject {
 		Employee employee2 = new Employee(null, "AAAB", null);
 		Employee employee3 = new Employee(null, "AAAC", null);
 		
-		Date start = new Date(2016 - 1900, 5, 2);
-		Date end = new Date(2016 - 1900, 5, 4);
+		Date start = new Date(2016 - 1900, 2, 2);
+		Date end = new Date(2016 - 1900, 2, 4);
 		
 		employeeManager.makeManager("Project1");
 		
