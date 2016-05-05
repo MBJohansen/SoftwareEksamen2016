@@ -122,7 +122,7 @@ public class Employee {
 	}
 	
 	
-	public boolean SearchHelp(String ID){
+	public boolean searchHelp(String ID){
 		Platform.update();
 		for(int i=0;i<activities.size();i++){
 			if(activities.get(i).getID().equals(ID)){

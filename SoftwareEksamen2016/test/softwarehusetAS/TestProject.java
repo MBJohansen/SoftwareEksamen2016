@@ -207,23 +207,29 @@ public class TestProject {
 	//Tests the finishing of an activity
 	@Test
 	public void testEndActivity() {
-
-		Employee employee = new Employee(null, "INIT", null);
-
+		Employee employeeManager = new Employee(null, "INIT", null);
+		Employee employee2 = new Employee(null, "INIT", null);
+		
 		Date start = new Date(2016 - 1900, 5, 2);
 		Date end = new Date(2016 - 1900, 5, 5);
-
-		Activity activity = new Activity(start, end, "Do something", "TODO1");
-
-		employee.addActivity(activity);
-
-		assertEquals(1, employee.viewActivities().size());
-
-		assertEquals(1, employee.viewActiveActivities().size());
 		
-		employee.endActivity();
+
+		employeeManager.makeManager("Project1");
 		
-		assertEquals(0, employee.viewActiveActivities().size());
+		employeeManager.createActivity(start, end, "Do something", "TODO");
+		
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+		
+		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
+		
+		assertEquals(1, employee2.viewActivities().size());
+
+		assertEquals(1, employee2.viewActiveActivities().size());
+		
+		employee2.endActivity();
+		
+		assertEquals(0, employee2.viewActiveActivities().size());
 		
 	}
 	
@@ -249,13 +255,27 @@ public class TestProject {
 		
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
 		
-		assertTrue(employee2.SearchHelp("TODO"));
+		assertTrue(employee2.searchHelp("TODO"));
 	}
 	
 	//Fails because of no available employees
 	@Test
 	public void testSearchHelpNoneAvailable() {
+		Employee employeeManager = new Employee(null, "INIT", null);
 		
+		Date start = new Date(2016 - 1900, 5, 2);
+		Date end = new Date(2016 - 1900, 5, 5);
+		
+		employeeManager.makeManager("Project1");
+		
+		employeeManager.createActivity(start, end, "Do something", "TODO");
+		
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employeeManager);
+		
+		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
+		
+		assertFalse(employeeManager.searchHelp("TODO"));
 	}
 	
 	//Searching for help to an activity with no time left
