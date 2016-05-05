@@ -116,6 +116,7 @@ public class Project{
 		if(goodEmployees==employees.size()){
 			success=true;
 		}	
+		Platform.update();
 		return success;
 	}
 	
