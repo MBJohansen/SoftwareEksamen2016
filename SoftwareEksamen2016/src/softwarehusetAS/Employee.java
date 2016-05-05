@@ -142,6 +142,10 @@ public class Employee {
 		return false;
 	}
 	
+	public double getHours(){
+		return hoursWorked;
+	}
+	
 	public List<Activity> viewActivities(){
 		return allActivities;
 	}

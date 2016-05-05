@@ -176,13 +176,32 @@ public class TestProject {
 	//Tests the specifying of hours used on an activity
 	@Test
 	public void testSpecifyHours() {
+		Employee employee = new Employee(null, "INIT", null);
+
+		Date start = new Date(2016 - 1900, 5, 2);
+		Date end = new Date(2016 - 1900, 5, 5);
+
+		Activity activity = new Activity(start, end, "Do something", "TODO1");
+		
+		employee.addHours(5, activity);
+		
+		assertEquals(5,Math.round(employee.getHours()));
 		
 	}
 	
 	//Fails due to wrong amount of hours
 	@Test
 	public void testSpecifyHoursFail() {
+		Employee employee = new Employee(null, "INIT", null);
+
+		Date start = new Date(2016 - 1900, 5, 2);
+		Date end = new Date(2016 - 1900, 5, 5);
+
+		Activity activity = new Activity(start, end, "Do something", "TODO1");
 		
+		employee.addHours(5.123, activity);
+		
+		assertEquals(0,Math.round(employee.getHours()));
 	}
 	
 	//Tests the finishing of an activity
