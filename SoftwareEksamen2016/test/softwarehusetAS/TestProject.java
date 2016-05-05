@@ -379,29 +379,11 @@ public class TestProject {
 		employeeManager.createActivity(start, end, "Do something", "TODO");
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
 		
+		assertEquals(0,(int)employee2.viewActivities().get(0).getHours());
+		
 		employee2.addHours(2,employee2.viewActivities().get(0));
 		
 		assertEquals(2,(int)employee2.viewActivities().get(0).getHours());
-	}
-	
-	//No hours added
-	@Test
-	public void testViewHoursZeroAdded() {
-		Employee employeeManager = new Employee(null, "INIT", null);
-		Employee employee2 = new Employee(null, "AAAB", null);
-		
-		employeeManager.makeManager("Project1");
-		
-		Date start = new Date(2014 - 1900, 4, 2);
-		Date end = new Date(2016 - 1900, 11, 2);
-		
-		List<Employee> employeeList = new ArrayList<Employee>();
-		employeeList.add(employee2);
-		
-		employeeManager.createActivity(start, end, "Do something", "TODO");
-		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
-		
-		assertEquals(0,(int)employee2.viewActivities().get(0).getHours());
 	}
 	
 	
