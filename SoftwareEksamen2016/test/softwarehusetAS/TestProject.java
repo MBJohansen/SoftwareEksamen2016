@@ -357,14 +357,30 @@ public class TestProject {
 		employee2.endActivity();
 		
 		assertEquals(1,employeeManager.getProjectInChargeOf().createReport().size());
+		Platform.endOfWeek();
 	}
 	
 	
-	//Use Case 6
-	
-	
-	
 	//Use Case 7
+	@Test
+	public void testViewHours() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+		Employee employee2 = new Employee(null, "AAAB", null);
+		
+		employeeManager.makeManager("Project1");
+		
+		Date start = new Date(2014 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+		
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+		
+		employeeManager.createActivity(start, end, "Do something", "TODO");
+		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
+		
+		
+		
+	}
 	
 	
 	
