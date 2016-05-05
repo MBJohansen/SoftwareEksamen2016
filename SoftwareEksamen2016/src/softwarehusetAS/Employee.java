@@ -126,8 +126,9 @@ public class Employee {
 		Platform.update();
 		for(int i=0;i<activities.size();i++){
 			if(activities.get(i).getID().equals(ID)){
+				if(Platform.getAvailableEmployees().size()>0){
 				Platform.getAvailableEmployees().get(0).addActivity(activities.get(i));
-				return true;
+				return true;}
 			}
 		}
 		return false;
