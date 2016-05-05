@@ -378,7 +378,9 @@ public class TestProject {
 		employeeManager.createActivity(start, end, "Do something", "TODO");
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
 		
+		employee2.addHours(2,employee2.viewActivities().get(0));
 		
+		assertEquals(2,(int)employee2.viewActivities().get(0).getHours());
 		
 	}
 	
