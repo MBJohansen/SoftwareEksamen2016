@@ -32,7 +32,7 @@ public class TestProject {
 
 		assertFalse(Platform.getProject("Project1").isActive());
 	}
-
+	
 	// Tests the creation of an activity and the projectmanager assigning an
 	// activity
 	@Test
@@ -41,8 +41,8 @@ public class TestProject {
 		Employee employee = new Employee(null, "INIT", null);
 
 		assertTrue(employee.isFree());
-		Date start = new Date(2016, 5, 2);
-		Date end = new Date(2016, 5, 5);
+		Date start = new Date(2016 - 1900, 5, 2);
+		Date end = new Date(2016 - 1900, 5, 5);
 
 		Activity activity = new Activity(start, end, "Do something", "TODO1");
 
@@ -51,7 +51,6 @@ public class TestProject {
 		assertFalse(employee.isFree());
 
 	}
-	
 	
 	//Use Case 1
 	
@@ -194,9 +193,15 @@ public class TestProject {
 	
 	//Use Case 2
 	
-	//Tests the specifying of hours used
+	//Tests the specifying of hours used on an activity
 	@Test
-	public void test () {
+	public void testSpecifyHours() {
+		
+	}
+	
+	//Fails due to wrong amount of hours
+	@Test
+	public void testSpecifyHoursFail() {
 		
 	}
 	
@@ -206,8 +211,8 @@ public class TestProject {
 
 		Employee employee = new Employee(null, "INIT", null);
 
-		Date start = new Date(2016, 5, 2);
-		Date end = new Date(2016, 5, 5);
+		Date start = new Date(2016 - 1900, 5, 2);
+		Date end = new Date(2016 - 1900, 5, 5);
 
 		Activity activity = new Activity(start, end, "Do something", "TODO1");
 
@@ -219,31 +224,46 @@ public class TestProject {
 	}
 	
 	
-	
-	@Test
-	public void test5 () {
-		
-	}
-	
-	
-	
 	//Use Case 3
+	
+	//Searching for help
 	@Test
-	public void test6 () {
+	public void testSearchHelp() {
 		
 	}
 	
+	//Fails because of no available employees
 	@Test
-	public void test7 () {
+	public void testSearchHelpNoneAvailable() {
 		
 	}
 	
-	
+	//Searching for help to an activity with no time left
+	@Test
+	public void testSearchHelpOutofTime() {
+		
+	}
 	
 	
 	//Use Case 4
 	
+	//Adding a vacation-activity
+	@Test
+	public void testAddVacation() {
+		
+	}
 	
+	//Typing wrong dates on a vacation-activity
+	@Test
+	public void testAddVacationFail() {
+		
+	}
+	
+	//
+	@Test
+	public void test() {
+		
+	}
 	
 	
 	//Use Case 5
@@ -291,6 +311,8 @@ public class TestProject {
 		Employee employee7 = new Employee(null, "AAAG", null);
 		
 		employeeManager.makeManager("Project1");
+		
+		//employee3 has no activities
 		
 		//employee2 and 4 are unavailable
 		employee2.setAvailable(false);
