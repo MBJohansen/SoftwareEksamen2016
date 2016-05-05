@@ -122,9 +122,15 @@ public class Employee {
 	}
 	
 	
-	public void SearchHelp(Activity activity){
+	public boolean SearchHelp(String ID){
 		Platform.update();
-		Platform.getAvailableEmployees().get(0).addActivity(activity);
+		for(int i=0;i<activities.size();i++){
+			if(activities.get(i).getID().equals(ID)){
+				Platform.getAvailableEmployees().get(0).addActivity(activities.get(i));
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	/*public void RegisterTime(Activity activity, Date date, Boolean pastEvent){
