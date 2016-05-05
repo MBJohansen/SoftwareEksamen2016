@@ -31,9 +31,12 @@ public class TestProject {
 		
         List<Activity> activitiesList  = new ArrayList();
 		
-		Activity activity1 = new Activity(start, end, "Intern Assignment", "Fix the cables");
+		Activity activity1 = new Activity(start, end, "Intern Assignment", "A1d");
+		Activity activity2 = new Activity(start, end, "Intern Assignment", "A2d");
 		
 		activitiesList.add(activity1);
+		activitiesList.add(activity2);
+
 		
 		Employee Intern = new Employee(activitiesList, "INTR", Platform.getProject("Project1"));
 		

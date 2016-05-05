@@ -27,6 +27,8 @@ public class Employee {
 		}
 		else{
 			List<Activity> activities2 = new ArrayList();
+			this.allActivities=activities2;
+
 			for(int i=0;i<activities.size();i++){
 				allActivities.add(activities.get(i));
 			}
