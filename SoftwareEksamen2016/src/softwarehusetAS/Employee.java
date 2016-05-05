@@ -140,9 +140,9 @@ public class Employee {
 		
 	}*/
 	
-	public boolean Edit(Date start, Date end, Activity activity){
+	public boolean Edit(Date start, Date end, String ID){
 		for(int i =0; i<allActivities.size(); i++){
-			if(allActivities.get(i).equals(activity)){
+			if(allActivities.get(i).getID().equals(ID)){
 				allActivities.get(i).setStartDate(start);
 				allActivities.get(i).setEndDate(end);
 				return true;
