@@ -259,12 +259,6 @@ public class TestProject {
 		
 	}
 	
-	//
-	@Test
-	public void test() {
-		
-	}
-	
 	
 	//Use Case 5
 	
