@@ -33,24 +33,13 @@ public class TestProject {
 		assertFalse(Platform.getProject("Project1").isActive());
 	}
 	
-	// Tests the creation of an activity and the projectmanager assigning an
-	// activity
+	//
 	@Test
-	public void testAssignActivity() {
-
-		Employee employee = new Employee(null, "INIT", null);
-
-		assertTrue(employee.isFree());
-		Date start = new Date(2016 - 1900, 5, 2);
-		Date end = new Date(2016 - 1900, 5, 5);
-
-		Activity activity = new Activity(start, end, "Do something", "TODO1");
-
-		employee.addActivity(activity);
-
-		assertFalse(employee.isFree());
-
+	public void testEditEndDateActvity() {
+		
 	}
+	
+	
 	
 	//Use Case 1
 	
@@ -79,8 +68,12 @@ public class TestProject {
 		List<Employee> employeeList = new ArrayList<Employee>();
 		employeeList.add(employee2);
 		
+		assertTrue(employee2.isFree());
+		
 		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
 		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
+		
+		assertFalse(employee2.isFree());
 	}
 	
 	//Manager failing to create an activity due to wrong dates
@@ -213,15 +206,16 @@ public class TestProject {
 		Date start = new Date(2016 - 1900, 5, 2);
 		Date end = new Date(2016 - 1900, 5, 5);
 		
-
 		employeeManager.makeManager("Project1");
 		
-		employeeManager.createActivity(start, end, "Do something", "TODO");
+		employeeManager.createActivity(start, end, "Do something1", "TODO1");
+		employeeManager.createActivity(start, end, "Do something2", "TODO2");
 		
 		List<Employee> employeeList = new ArrayList<Employee>();
 		employeeList.add(employee2);
 		
-		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
+		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO1");
+		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO2");
 		
 		assertEquals(1, employee2.viewActivities().size());
 
