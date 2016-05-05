@@ -19,6 +19,45 @@ public class Test2 {
 		Platform.reset();
 	}
 
+	
+	
+	@Test
+	public void testVacationSuccess (){
+		
+		
+		// Testing that the employee can go on vacation
+		Employee Reinhardt = new Employee(null, "REIN", null);
+		
+		Date start = new Date(2016, 10, 10);
+		Date end = new Date(2016, 10, 12);
+		
+		assertTrue(Reinhardt.addVacation(start, end));
+		
+		assertEquals(1, Reinhardt.viewActiveActivities().size());
+		
+		//Not on vacation, as the date is in the future
+		assertFalse(Reinhardt.onVacation());
+		
+	}
+	
+	@Test
+	public void testVacationFail() {
+		
+		//Testing that the employee cannot enter dates in the wrong order
+		
+		Employee Reinhardt = new Employee(null, "REIN", null);
+		
+		Date start = new Date(2016,10,12);
+		Date end = new Date(2016, 10,10);
+		
+		assertFalse(Reinhardt.addVacation(start, end));
+		
+		
+		
+	}
+	
+	
+	
 //	// Tests the creation of a project and assigning a projectmanager
 //	@Test
 //	public void testMakeManager() {
