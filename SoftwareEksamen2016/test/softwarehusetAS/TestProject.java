@@ -206,7 +206,8 @@ public class TestProject {
 		Date end = new Date(2016 - 1900, 5, 5);
 
 		Activity activity = new Activity(start, end, "Do something", "TODO1");
-		
+		employee.addActivity(activity);
+
 		employee.addHours(5.123, "TODO1");
 		
 		assertEquals(0,Math.round(employee.getHours()));
