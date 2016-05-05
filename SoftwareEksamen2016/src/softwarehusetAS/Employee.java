@@ -198,6 +198,7 @@ public class Employee {
 			for(int i=0;i<currentProject.getActivities().size();i++){
 				if(currentProject.getActivities().get(i).getID().equals(activityID)){
 					Platform.update();
+					
 					return false;
 				}
 			}
@@ -207,6 +208,10 @@ public class Employee {
 			return true;
 		}
 		Platform.update();
+		if(activityID.equals("VAC")){
+			addActivity(new Activity(startDate,endDate,description,activityID));
+			return true;
+		}
 		return false;
 	}
 

@@ -239,8 +239,8 @@ public class TestProject {
 		// Testing that the employee can go on vacation
 		Employee employee = new Employee(null, "INIT", null);
 		
-		Date start = new Date(2016, 10, 10);
-		Date end = new Date(2016, 10, 12);
+		Date start = new Date(2016-1900, 10, 10);
+		Date end = new Date(2016-1900, 10, 12);
 		
 		assertTrue(employee.addVacation(start, end));
 		
@@ -257,8 +257,8 @@ public class TestProject {
 		
 		Employee employee = new Employee(null, "INIT", null);
 		
-		Date start = new Date(2016,10,12);
-		Date end = new Date(2016, 10,10);
+		Date start = new Date(2016-1900,10,12);
+		Date end = new Date(2016-1900, 10,10);
 		
 		assertFalse(employee.addVacation(start, end));
 	}
