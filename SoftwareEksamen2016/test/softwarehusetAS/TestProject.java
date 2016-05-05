@@ -217,13 +217,13 @@ public class TestProject {
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO1");
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO2");
 		
-		assertEquals(1, employee2.viewActivities().size());
+		assertEquals(2, employee2.viewActivities().size());
 
-		assertEquals(1, employee2.viewActiveActivities().size());
+		assertEquals(2, employee2.viewActiveActivities().size());
 		
 		employee2.endActivity();
 		
-		assertEquals(0, employee2.viewActiveActivities().size());
+		assertEquals(1, employee2.viewActiveActivities().size());
 		
 	}
 	
