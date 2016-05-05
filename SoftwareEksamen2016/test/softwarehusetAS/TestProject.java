@@ -143,28 +143,6 @@ public class TestProject {
 		assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
 	}
 	
-	//Status report
-	@Test
-	public void testCreateStatusReport() {
-		Employee employeeManager = new Employee(null, "INIT", null);
-		
-		employeeManager.makeManager("Project1");
-		
-		Date start = new Date(2014 - 1900, 4, 2);
-		Date end = new Date(2016 - 1900, 11, 2);
-		
-		Employee employee2 = new Employee(null, "AAAB", null);
-		List<Employee> employeeList = new ArrayList<Employee>();
-		employeeList.add(employee2);
-		
-		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
-		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
-		
-		employee2.endActivity();
-		
-		assertEquals(1,employeeManager.getProjectInChargeOf().createReport().size());
-	}
-	
 	//Manager fail to assign due to sickness
 	@Test
 	public void testManagerAssignActivityFail2() {
@@ -189,6 +167,8 @@ public class TestProject {
 		// Is sick
 		assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
 	}
+	
+	//Tests for the creation of a status report is under use case 5
 	
 	
 	//Use Case 2
@@ -254,14 +234,33 @@ public class TestProject {
 	
 	//Adding a vacation-activity
 	@Test
-	public void testAddVacation() {
+	public void testVacationSuccess (){
 		
+		// Testing that the employee can go on vacation
+		Employee employee = new Employee(null, "INIT", null);
+		
+		Date start = new Date(2016, 10, 10);
+		Date end = new Date(2016, 10, 12);
+		
+		assertTrue(employee.addVacation(start, end));
+		
+		assertEquals(1, employee.viewActiveActivities().size());
+		
+		//Not on vacation, as the date is in the future
+		assertFalse(employee.onVacation());
 	}
 	
 	//Typing wrong dates on a vacation-activity
 	@Test
-	public void testAddVacationFail() {
+	public void testVacationFail() {
+		//Testing that the employee cannot enter dates in the wrong order
 		
+		Employee employee = new Employee(null, "INIT", null);
+		
+		Date start = new Date(2016,10,12);
+		Date end = new Date(2016, 10,10);
+		
+		assertFalse(employee.addVacation(start, end));
 	}
 	
 	
@@ -270,9 +269,24 @@ public class TestProject {
 	//Tests the creation of a status report
 	@Test
 	public void testCreateStatusReport() {
+		Employee employeeManager = new Employee(null, "INIT", null);
 		
+		employeeManager.makeManager("Project1");
+		
+		Date start = new Date(2014 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+		
+		Employee employee2 = new Employee(null, "AAAB", null);
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+		
+		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
+		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
+		
+		employee2.endActivity();
+		
+		assertEquals(1,employeeManager.getProjectInChargeOf().createReport().size());
 	}
-	
 	
 	
 	//Use Case 6
