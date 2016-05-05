@@ -19,7 +19,7 @@ public class Employee {
 	private double hoursWorked=0;
 	
 	public Employee(List<Activity> activities, String ID, Project currentProject){
-		
+		free=true;
 		if(activities==null){
 			activities = new ArrayList();
 			List<Activity> activities2 = new ArrayList();
