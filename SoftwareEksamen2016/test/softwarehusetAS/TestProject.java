@@ -220,7 +220,12 @@ public class TestProject {
 
 		assertEquals(1, employee.viewActivities().size());
 
+		assertEquals(1, employee.viewActiveActivities().size());
+		
 		employee.endActivity();
+		
+		assertEquals(0, employee.viewActiveActivities().size());
+		
 	}
 	
 	
@@ -262,7 +267,12 @@ public class TestProject {
 	
 	//Use Case 5
 	
-	//
+	//Tests the creation of a status report
+	@Test
+	public void testCreateStatusReport() {
+		
+	}
+	
 	
 	
 	//Use Case 6
