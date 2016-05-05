@@ -51,25 +51,7 @@ public class TestProject {
 		assertFalse(employee.isFree());
 
 	}
-
-	// Tests the finishing of an activity
-	@Test
-	public void testEndActivity() {
-
-		Employee employee = new Employee(null, "INIT", null);
-
-		Date start = new Date(2016, 5, 2);
-		Date end = new Date(2016, 5, 5);
-
-		Activity activity = new Activity(start, end, "Do something", "TODO1");
-
-		employee.addActivity(activity);
-
-		assertEquals(1, employee.viewActivities().size());
-
-		employee.endActivity();
-
-	}
+	
 	
 	//Use Case 1
 	
@@ -211,10 +193,32 @@ public class TestProject {
 	
 	
 	//Use Case 2
+	
+	//Tests the specifying of hours used
 	@Test
-	public void test4 () {
+	public void test () {
 		
 	}
+	
+	//Tests the finishing of an activity
+	@Test
+	public void testEndActivity() {
+
+		Employee employee = new Employee(null, "INIT", null);
+
+		Date start = new Date(2016, 5, 2);
+		Date end = new Date(2016, 5, 5);
+
+		Activity activity = new Activity(start, end, "Do something", "TODO1");
+
+		employee.addActivity(activity);
+
+		assertEquals(1, employee.viewActivities().size());
+
+		employee.endActivity();
+	}
+	
+	
 	
 	@Test
 	public void test5 () {
