@@ -99,14 +99,16 @@ public class Employee {
 		}
 	}
 	
-	public void addHours(double hours,Activity activity){
+	public void addHours(double hours,String ID){
+		for(int i=0;i<activities.size();i++){
+			if(activities.get(i).getID().equals(ID)){
 		double hourCheck=(hours*10)/5;
 		if(hourCheck==Math.ceil(hourCheck)){
 			hoursWorked=hoursWorked+hours;
-			activity.addHours(hours);
+			activities.get(i).addHours(hours);
 		}else{
 			System.out.println("Please limit the hour logging to half hour increments");
-		}
+		}}}
 		
 		
 		

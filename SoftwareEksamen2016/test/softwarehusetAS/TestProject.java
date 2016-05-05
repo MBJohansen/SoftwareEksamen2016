@@ -191,7 +191,7 @@ public class TestProject {
 
 		Activity activity = new Activity(start, end, "Do something", "TODO1");
 		
-		employee.addHours(5, activity);
+		employee.addHours(5, "TODO1");
 		
 		assertEquals(5,Math.round(employee.getHours()));
 		
@@ -207,7 +207,7 @@ public class TestProject {
 
 		Activity activity = new Activity(start, end, "Do something", "TODO1");
 		
-		employee.addHours(5.123, activity);
+		employee.addHours(5.123, "TODO1");
 		
 		assertEquals(0,Math.round(employee.getHours()));
 	}
@@ -390,7 +390,7 @@ public class TestProject {
 		
 		assertEquals(0,(int)employee2.viewActivities().get(0).getHours());
 		
-		employee2.addHours(2,employee2.viewActivities().get(0));
+		employee2.addHours(2,"TODO");
 		
 		assertEquals(2,(int)employee2.viewActivities().get(0).getHours());
 	}
