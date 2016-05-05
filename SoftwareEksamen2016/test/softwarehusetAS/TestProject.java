@@ -281,7 +281,23 @@ public class TestProject {
 	//Searching for help to an activity with no time left
 	@Test
 	public void testSearchHelpOutofTime() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+		Employee employee2 = new Employee(null, "AAAB", null);
+		Employee employee3 = new Employee(null, "AAAC", null);
 		
+		Date start = new Date(2016 - 1900, 5, 2);
+		Date end = new Date(2016 - 1900, 5, 4);
+		
+		employeeManager.makeManager("Project1");
+		
+		employeeManager.createActivity(start, end, "Do something", "TODO");
+		
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+		
+		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
+		
+		assertFalse(employee2.searchHelp("TODO"));
 	}
 	
 	
