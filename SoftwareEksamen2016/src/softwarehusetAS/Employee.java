@@ -127,6 +127,7 @@ public class Employee {
 
 		for(int i=0;i<activities.size();i++){
 			if(activities.get(i).getID().equals(ID)){
+				if(activities.get(i).getEndDate().before(new Date())){return false;}
 				if(Platform.getFreeEmployees().size()>0){
 				Platform.getFreeEmployees().get(0).addActivity(activities.get(i));
 				return true;}
