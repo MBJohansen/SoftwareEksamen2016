@@ -19,6 +19,26 @@ public class TestProject {
 		Platform.reset();
 	}
 	
+	@Test
+	public void constructorTest() {
+		
+		Employee employeeManager = new Employee(null, "INIT", null);
+
+     	Date start = new Date(2014 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+		
+		employeeManager.makeManager("Project1");
+		
+        List<Activity> activitiesList  = new ArrayList();
+		
+		Activity activity1 = new Activity(start, end, "Intern Assignment", "Fix the cables");
+		
+		activitiesList.add(activity1);
+		
+		Employee Intern = new Employee(activitiesList, "INTR", Platform.getProject("Project1"));
+		
+	}
+	
 	// Tests the finishing of a project
 	@Test
 	public void testEndProject() {
@@ -472,14 +492,7 @@ public class TestProject {
 		assertEquals(2,employeeManager.getProjectInChargeOf().getEmployees().size());
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	// // Tests editing the used time on an activity
