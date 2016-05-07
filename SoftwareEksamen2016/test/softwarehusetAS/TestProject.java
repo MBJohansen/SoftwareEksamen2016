@@ -127,6 +127,8 @@ public class TestProject {
 		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
 		
 		//And again
+		employee2.setAvailable(false);
+		
 		employee2.setAvailable(true);
 	}
 	
