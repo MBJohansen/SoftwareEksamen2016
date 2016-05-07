@@ -104,6 +104,7 @@ public class TestProject {
 		assertEquals(0,employee2.getActiveTime("TODO2"));
 	}
 	
+	//
 	@Test
 	public void testSetAvailability() {
 		Employee employeeManager = new Employee(null, "INIT", null);
@@ -132,6 +133,27 @@ public class TestProject {
 		employee2.setAvailable(true);
 	}
 	
+	//Testing on vacation
+	@Test
+	public void testOnVacation() {
+		
+		Employee employee = new Employee(null, "INIT", null);
+		
+		Date start = new Date(2016-1900,6,9);
+		Date end = new Date(2016-1900, 10,15);
+		
+		assertTrue(employee.addVacation(start, end));
+		
+		Date newStart = new Date(2016-1900,3,9);
+		Date newEnd = new Date(2016-1900,8,2);
+		
+		//Assigning new dates to the vacation to actually test if onVacation works
+		//This shouldn't be legal but it is necessary to test it
+		employee.Edit(newStart, newEnd, "VAC");
+		
+		assertTrue(employee.onVacation());
+	}
+		
 	
 	//Use Case 1
 	
@@ -225,6 +247,7 @@ public class TestProject {
 		}
 		
 		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
+		assertFalse(employeeManager.createActivity(start, end, "Do something", "TODO"));
 		assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
 	}
 	
@@ -419,6 +442,8 @@ public class TestProject {
 		Date end = new Date(2016-1900, 10,10);
 		
 		assertFalse(employee.addVacation(start, end));
+		
+		assertFalse(employee.onVacation());
 	}
 	
 	
