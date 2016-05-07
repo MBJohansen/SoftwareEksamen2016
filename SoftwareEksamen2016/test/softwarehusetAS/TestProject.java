@@ -219,8 +219,13 @@ public class TestProject {
 		assertTrue(employee2.isAvailable());
 
 		employee2.setAvailable(false);
-
+		
 		assertFalse(employee2.isAvailable());
+		
+		//Setting available again to test the whole method
+		employee2.setAvailable(true);
+		
+		employee2.setAvailable(false);
 
 		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
 		// Is sick
