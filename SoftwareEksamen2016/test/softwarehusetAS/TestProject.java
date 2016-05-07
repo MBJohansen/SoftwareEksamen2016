@@ -76,9 +76,9 @@ public class TestProject {
 		employeeManager.createActivity(start, end, "Do something", "TODO");
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
 		
-		employee2.Edit(newStart,newEnd,"TODO");
+		assertTrue(employee2.Edit(newStart,newEnd,"TODO"));
 		
-		
+		assertFalse(employee2.Edit(newStart, newEnd, "TODO2"));
 	}
 	
 	
