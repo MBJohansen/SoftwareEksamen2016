@@ -46,42 +46,6 @@ public class Project{
 //		activity.editEndDate(newEndTime);		
 //	}
 	
-	public boolean firstDateAfterSecond(Date first, Date second){
-		if(first.getYear()>second.getYear()){
-			return true;
-		}
-		else if(first.getYear()==second.getYear()){
-			if(first.getMonth()>second.getMonth()){
-				return true;
-			}
-			else if(first.getMonth()==second.getMonth()){
-				if(first.getDate()>second.getDate()){
-					return true;
-				}
-				else if(first.getDate()==second.getDate()){
-					if(first.getHours()>second.getHours()){
-						return true;
-					}
-					else if(first.getHours()==second.getHours()){
-						if(first.getMinutes()>second.getMinutes()){
-							return true;
-						}
-						else if(first.getMinutes()==first.getMinutes()){
-							if(first.getSeconds()>second.getSeconds()){
-								return true;
-							}
-						}
-					}
-				}
-			}
-			
-		}
-		
-		
-		
-		return false;
-	}
-	
 	public boolean assignActivity(List<Employee> employees, String activityID){	
 		boolean success=false;
 		int goodEmployees=0;
@@ -99,7 +63,7 @@ public class Project{
 		
 		Date currentDate = new Date ();
 		
-		if(firstDateAfterSecond(currentDate,activity.getEndDate())){
+		if(currentDate.after(activity.getEndDate())) {
 			return false;
 		}
 		
