@@ -524,6 +524,8 @@ public class TestProject {
 		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
 		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
 		
+		assertEquals(0,employeeManager.getProjectInChargeOf().createReport().size());
+		
 		employee2.endActivity();
 		
 		assertEquals(1,employeeManager.getProjectInChargeOf().createReport().size());
