@@ -56,7 +56,7 @@ public class TestProject {
 		assertFalse(Platform.getProject("Project1").isActive());
 	}
 	
-	//
+	//Editing start and end dates for an activity
 	@Test
 	public void testEditActvityDates() {
 		Employee employeeManager = new Employee(null, "INIT", null);
@@ -81,6 +81,30 @@ public class TestProject {
 		assertFalse(employee2.Edit(newStart, newEnd, "TODO2"));
 	}
 	
+	//Test the amount of time left on an activity
+	@Test
+	public void testActiveTime() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+		Employee employee2 = new Employee(null, "AAAB", null);
+		
+		employeeManager.makeManager("Project1");
+		
+		Date start = new Date(2016 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+		
+
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+		
+		employeeManager.createActivity(start, end, "Do something", "TODO");
+		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
+		
+		
+		assertTrue(0 < employee2.getActiveTime("TODO"));
+		
+		assertEquals(0,employee2.getActiveTime("TODO2"));
+		
+	}
 	
 	
 	//Use Case 1
