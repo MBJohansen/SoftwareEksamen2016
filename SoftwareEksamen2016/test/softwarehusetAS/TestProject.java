@@ -134,6 +134,8 @@ public class TestProject {
 		List<Employee> employeeList = new ArrayList<Employee>();
 		employeeList.add(employee2);
 		
+		employee2.setAvailable(true);
+		
 		employee2.setAvailable(false);
 		
 		//Setting available again to test all possibilities of the method
