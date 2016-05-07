@@ -230,6 +230,9 @@ public class TestProject {
 		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
 		// Is sick
 		assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
+		
+		//Again to test all possibilities in the method
+		employee2.setAvailable(true);
 	}
 	
 	//Tests for the creation of a status report is under use case 5
