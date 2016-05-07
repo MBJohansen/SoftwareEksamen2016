@@ -117,17 +117,19 @@ public abstract class Platform {
 		}
 	}*/
 	
-	public static void editEmployee(Employee employee){
+	public static boolean editEmployee(String employeeID){
 		Boolean found = false;
 		for(int i=0; i<employees.size(); i++){
-			if(employees.get(i).equals(employee)){
-				employees.remove(i);
+			if(employees.get(i).getID().equals(employeeID)){
+				//employees.remove(i);
 				found=true;
 			}
 		}
-		if(found==false){
-				employees.add(employee);
-		}
+		return found;
+	}
+	
+	public static void addEmployee(Employee emp){
+		employees.add(emp);
 	}
 	
 	public static void editProjects(Project project){

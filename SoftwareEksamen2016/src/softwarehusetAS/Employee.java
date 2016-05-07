@@ -38,8 +38,14 @@ public class Employee {
 		this.activities=activities;
 		
 		this.currentProject=currentProject;
-		Platform.editEmployee(this);
+		if(!Platform.editEmployee(this.getID())){
+			Platform.addEmployee(this);
+		}
 
+	}
+	
+	public String getID(){
+		return ID;
 	}
 	
 	public boolean onVacation (){
@@ -102,8 +108,10 @@ public class Employee {
 	}
 	
 	public void addHours(double hours,String ID){
+		boolean activityFound=false;
 		for(int i=0;i<allActivities.size();i++){
 			if(allActivities.get(i).getID().equals(ID)){
+				activityFound=true;
 		double hourCheck=(hours*10)/5;
 		if(hourCheck==Math.ceil(hourCheck)){
 			hoursWorked=hoursWorked+hours;
@@ -111,7 +119,9 @@ public class Employee {
 		}else{
 			System.out.println("Please limit the hour logging to half hour increments");
 		}}}
-		
+		if(!activityFound){
+			System.out.println("You are not assigned the indicated activity");
+		}
 		
 		
 	}
