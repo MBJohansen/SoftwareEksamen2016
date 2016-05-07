@@ -94,7 +94,7 @@ public abstract class Platform {
 				}
 			}
 		}
-		return emp;
+		return emp; // s
 	}
 	
 	public static List<Employee> getAvailableEmployees(){

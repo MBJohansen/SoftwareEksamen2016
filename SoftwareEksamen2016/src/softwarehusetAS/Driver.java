@@ -185,7 +185,7 @@ public class Driver {
 					next=sc.next();
 					}
 					emp.getProjectInChargeOf().assignActivity(Platform.getEmployees(employeeList), activityID);
-					doOption(mainMenu());
+					doOption(mainMenu());// s
 					
 				}else{
 						System.out.println("Please enter a valid option");
