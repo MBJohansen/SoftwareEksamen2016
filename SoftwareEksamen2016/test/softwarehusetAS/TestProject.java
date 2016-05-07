@@ -152,6 +152,19 @@ public class TestProject {
 		employee2.setAvailable(true);
 	}
 	
+	//Adding vacation in the past
+	@Test
+	public void testVacationFail2() {
+		Employee employee = new Employee(null, "INIT", null);
+		
+		Date start = new Date(2016-1900,2,12);
+		Date end = new Date(2016-1900, 4,10);
+		
+		assertFalse(employee.addVacation(start, end));
+		
+		assertFalse(employee.onVacation());
+	}
+	
 	//Testing on vacation
 	@Test
 	public void testOnVacation() {
