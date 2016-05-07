@@ -66,6 +66,9 @@ public class TestProject {
 		
 		Date start = new Date(2014 - 1900, 4, 2);
 		Date end = new Date(2016 - 1900, 11, 2);
+
+		Date newStart = new Date(2014 - 1900, 5, 5);
+		Date newEnd = new Date(2016 - 1900, 12, 7);
 		
 		List<Employee> employeeList = new ArrayList<Employee>();
 		employeeList.add(employee2);
@@ -73,6 +76,7 @@ public class TestProject {
 		employeeManager.createActivity(start, end, "Do something", "TODO");
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
 		
+		employee2.Edit(newStart,newEnd,"TODO");
 		
 		
 	}
