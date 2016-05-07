@@ -627,39 +627,4 @@ public class TestProject {
 		
 		assertEquals(2,employeeManager.getProjectInChargeOf().getEmployees().size());
 	}
-	
-
-	
-	
-	// // Tests editing the used time on an activity
-	// @Test
-	// public void testEditActivityUsedTime() {
-	// Employee employee = new Employee(null, "INIT", null);
-	//
-	// }
-	//
-	// // Tests editing the estimated time of an activity
-	// @Test
-	// public void testEditActivityEstimatedTime() {
-	// Employee employee = new Employee(null, "INIT", null);
-	//
-	// }
-	//
-	// @Test
-	// public void testViewActivity() {
-	// Employee employee = new Employee(null, "INIT", null);
-	//
-	// }
-	//
-	// @Test
-	// public void test() {
-	// Employee employee = new Employee(null, "INIT", null);
-	//
-	// }
-	//
-	// @Test
-	// public void test() {
-	// Employee employee = new Employee(null, "INIT", null);
-	//
-	// }
 }

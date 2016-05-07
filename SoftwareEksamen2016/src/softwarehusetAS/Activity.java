@@ -20,10 +20,6 @@ public class Activity {
 		hoursUsed=0;
 	}
 	
-	public void editEndDate(Date endDate){
-		this.endDate=endDate;
-	}
-	
 	public void addHours(double inHours){
 		hoursUsed=hoursUsed+inHours;
 	}
