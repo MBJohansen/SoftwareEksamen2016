@@ -41,10 +41,10 @@ public class Project{
 		
 	}
 	
-	public void editActivity(Date newEndTime, Activity activity){
-		newEndTime.setYear(newEndTime.getYear());
-		activity.editEndDate(newEndTime);		
-	}
+//	public void editActivity(Date newEndTime, Activity activity){
+//		newEndTime.setYear(newEndTime.getYear());
+//		activity.editEndDate(newEndTime);		
+//	}
 	
 	public boolean firstDateAfterSecond(Date first, Date second){
 		if(first.getYear()>second.getYear()){
