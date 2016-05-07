@@ -242,6 +242,9 @@ public class TestProject {
 		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
 		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
 		
+		//Trying to create an activity that doesn't exist
+		assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO2"));
+		
 		assertFalse(employee2.isFree());
 	}
 	
