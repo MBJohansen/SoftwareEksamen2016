@@ -1,63 +1,63 @@
-package softwarehusetAS;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.util.Date;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.After;
-import org.junit.Test;
-
-public class Test2 {
-
-	@After
-	public void doReset() {
-		Platform.reset();
-	}
-
-	
-	
-	@Test
-	public void testVacationSuccess (){
-		
-		
-		// Testing that the employee can go on vacation
-		Employee Reinhardt = new Employee(null, "REIN", null);
-		
-		Date start = new Date(2016, 10, 10);
-		Date end = new Date(2016, 10, 12);
-		
-		assertTrue(Reinhardt.addVacation(start, end));
-		
-		assertEquals(1, Reinhardt.viewActiveActivities().size());
-		
-		//Not on vacation, as the date is in the future
-		assertFalse(Reinhardt.onVacation());
-		
-	}
-	
-	@Test
-	public void testVacationFail() {
-		
-		//Testing that the employee cannot enter dates in the wrong order
-		
-		Employee Reinhardt = new Employee(null, "REIN", null);
-		
-		Date start = new Date(2016,10,12);
-		Date end = new Date(2016, 10,10);
-		
-		assertFalse(Reinhardt.addVacation(start, end));
-		
-		
-		
-	}
-	
-	
-	
+//package softwarehusetAS;
+//
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertFalse;
+//import static org.junit.Assert.assertTrue;
+//import static org.junit.Assert.fail;
+//
+//import java.util.Date;
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//import org.junit.After;
+//import org.junit.Test;
+//
+//public class Test2 {
+//
+//	@After
+//	public void doReset() {
+//		Platform.reset();
+//	}
+//
+//	
+//	
+//	@Test
+//	public void testVacationSuccess (){
+//		
+//		
+//		// Testing that the employee can go on vacation
+//		Employee Reinhardt = new Employee(null, "REIN", null);
+//		
+//		Date start = new Date(2016, 10, 10);
+//		Date end = new Date(2016, 10, 12);
+//		
+//		assertTrue(Reinhardt.addVacation(start, end));
+//		
+//		assertEquals(1, Reinhardt.viewActiveActivities().size());
+//		
+//		//Not on vacation, as the date is in the future
+//		assertFalse(Reinhardt.onVacation());
+//		
+//	}
+//	
+//	@Test
+//	public void testVacationFail() {
+//		
+//		//Testing that the employee cannot enter dates in the wrong order
+//		
+//		Employee Reinhardt = new Employee(null, "REIN", null);
+//		
+//		Date start = new Date(2016,10,12);
+//		Date end = new Date(2016, 10,10);
+//		
+//		assertFalse(Reinhardt.addVacation(start, end));
+//		
+//		
+//		
+//	}
+//	
+//	
+//	
 //	// Tests the creation of a project and assigning a projectmanager
 //	@Test
 //	public void testMakeManager() {
@@ -175,44 +175,5 @@ public class Test2 {
 //		assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO22"));
 //		
 //	}
-	
-	// Use Case 2
-	
-	@Test
-	public void test() {}
-	
-	
-	
-	
-//	 // Tests editing the used time on an activity
-//	 @Test
-//	 public void testEditActivityUsedTime() {
-//	 Employee employee = new Employee(null, "INIT", null);
 //	
-//	 }
-//	
-//	 // Tests editing the estimated time of an activity
-//	 @Test
-//	 public void testEditActivityEstimatedTime() {
-//	 Employee employee = new Employee(null, "INIT", null);
-//	
-//	 }
-//	
-//	 @Test
-//	 public void testViewActivity() {
-//	 Employee employee = new Employee(null, "INIT", null);
-//	
-//	 }
-//	
-//	 @Test
-//	 public void test() {
-//	 Employee employee = new Employee(null, "INIT", null);
-//	
-//	 }
-//	
-//	 @Test
-//	 public void test() {
-//	 Employee employee = new Employee(null, "INIT", null);
-//	
-//	 }
-}
+//}

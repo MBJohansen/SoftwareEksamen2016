@@ -184,6 +184,7 @@ public class TestProject {
 		assertTrue(employee.onVacation());
 	}
 	
+	//Giving an employee a list of activities
 	@Test
 	public void testSetActivities() {
 
