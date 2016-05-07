@@ -1,6 +1,8 @@
 package softwarehusetAS;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class Driver {
@@ -151,14 +153,15 @@ public class Driver {
 						end = new Date(Integer.parseInt(input.substring(0, 4))-1900,Integer.parseInt(input.substring(4,6))-1,Integer.parseInt(input.substring(6,8)));
 					}else{success=false;}
 					System.out.println("Please enter a description for the activity");
-					String desc = sc.nextLine();
+					String desc = sc.next();
 					System.out.println("Please enter an ID for the activity");
 					String ID=sc.next();
 					
 					if(success){
-						emp.createActivity(start, end, desc, ID);
+						if(emp.createActivity(start, end, desc, ID)){
 						System.out.println("The activity " + ID + " has been created");
-
+						}
+						else{System.out.println("You have entered invalid dates. Please try again");}
 					}else{
 						System.out.println("You have entered invalid dates. Please try again");
 					}
@@ -171,6 +174,24 @@ public class Driver {
 				}
 				break;
 			case 5:
+				if(emp.isProjectManager()){
+					List<String> employeeList = new ArrayList();
+					System.out.println("Please enter the ID of the activity");
+					String activityID=sc.next();
+					System.out.println("Please enter the ID of the employees you want working on the activity. Seperate each input with a break and end with 'q'");
+					String next=sc.next();
+					while(!next.equals("q")){
+					employeeList.add(next);
+					next=sc.next();
+					}
+					emp.getProjectInChargeOf().assignActivity(Platform.getEmployees(employeeList), activityID);
+					doOption(mainMenu());
+					
+				}else{
+						System.out.println("Please enter a valid option");
+						doOption(mainMenu());
+
+					}
 				break;
 			case 6:
 				break;

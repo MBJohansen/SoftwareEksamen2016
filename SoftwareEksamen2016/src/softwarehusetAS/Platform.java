@@ -84,6 +84,19 @@ public abstract class Platform {
 		return employees;
 	}
 	
+	public static List<Employee> getEmployees(List<String> s){
+		List<Employee> emp= new ArrayList();
+		
+		for(int i=0;i<s.size();i++){
+			for(int j=0;j<employees.size();j++){
+				if(s.get(i).equals(employees.get(j).getID())){
+					emp.add(employees.get(j));
+				}
+			}
+		}
+		return emp;
+	}
+	
 	public static List<Employee> getAvailableEmployees(){
 		List <Employee> outputList = new ArrayList<Employee>();
 		
