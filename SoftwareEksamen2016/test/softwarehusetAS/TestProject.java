@@ -99,11 +99,35 @@ public class TestProject {
 		employeeManager.createActivity(start, end, "Do something", "TODO");
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
 		
-		
 		assertTrue(0 < employee2.getActiveTime("TODO"));
 		
 		assertEquals(0,employee2.getActiveTime("TODO2"));
+	}
+	
+	@Test
+	public void testSetAvailability() {
+		Employee employeeManager = new Employee(null, "INIT", null);
 		
+		employeeManager.makeManager("Project1");
+		
+		Date start = new Date(2014 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+		
+		Employee employee2 = new Employee(null, "AAAB", null);
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+		
+		employee2.setAvailable(false);
+		
+		//Setting available again to test all possibilities of the method
+		employee2.setAvailable(true);
+
+		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
+		
+		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
+		
+		//And again
+		employee2.setAvailable(true);
 	}
 	
 	
@@ -222,17 +246,9 @@ public class TestProject {
 		
 		assertFalse(employee2.isAvailable());
 		
-		//Setting available again to test the whole method
-		employee2.setAvailable(true);
-		
-		employee2.setAvailable(false);
-
 		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
 		// Is sick
 		assertFalse(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
-		
-		//Again to test all possibilities in the method
-		employee2.setAvailable(true);
 	}
 	
 	//Tests for the creation of a status report is under use case 5
