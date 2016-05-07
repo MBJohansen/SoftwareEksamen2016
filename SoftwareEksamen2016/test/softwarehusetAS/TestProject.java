@@ -19,6 +19,7 @@ public class TestProject {
 		Platform.reset();
 	}
 	
+	//
 	@Test
 	public void constructorTest() {
 		
@@ -40,6 +41,24 @@ public class TestProject {
 		
 		Employee Intern = new Employee(activitiesList, "INTR", Platform.getProject("Project1"));
 		
+	}
+	
+	//Test make manager when already manager
+	@Test
+	public void testAlreadyManager() {
+
+		Employee employeeManager = new Employee(null, "INIT", null);
+
+     	Date start = new Date(2014 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+		
+		assertEquals(null,employeeManager.getProjectInChargeOf());
+		
+		employeeManager.makeManager("Project1");
+		
+		assertTrue(employeeManager.isProjectManager());
+		
+		employeeManager.makeManager("Project2");
 	}
 	
 	// Tests the finishing of a project
