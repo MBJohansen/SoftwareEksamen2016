@@ -12,7 +12,7 @@ import org.junit.After;
 import org.junit.Test;
 
 //
-/*public class Test2 {
+public class Test2 {
 	//
 	@After
 	public void doReset() {
@@ -20,11 +20,26 @@ import org.junit.Test;
 	}
 
 	
+	@Test
+	public void testDeleteProject() {
+		Employee employee = new Employee(null, "INIT", null);
+		Employee employee2 = new Employee(null, "INI2", null);
+
+		employee.makeManager("Project1");
+		employee2.makeManager("Project 2");
+		
+		assertEquals(2,Platform.getProjects().size());
+		
+		Platform.editProjects(employee.getProjectInChargeOf());
+		
+		assertEquals(1,Platform.getProjects().size());
+	}
+}
 	
 	
 	
 	
-	
+/*	
 	
 	
 
