@@ -61,7 +61,39 @@ public class TestProject {
 		Employee Intern = new Employee(activitiesList, "INTR", Platform.getProject("Project2"));
 	}
 	
-	
+	//
+	@Test
+	public void testGetAvailable() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+
+		Date start = new Date(2014 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+
+		employeeManager.makeManager("Project1");
+
+		Employee employee2 = new Employee(null, "AAAB", null);
+		Employee employee3 = new Employee(null, "AABB", null);
+		Employee employee4 = new Employee(null, "ABBB", null);
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+		employeeList.add(employee3);
+		employeeList.add(employee4);
+		employee4.setAvailable(false);
+
+		for (int i = 1; i <= 20; i++) {
+
+			employeeManager.createActivity(start, end, "Do something" + i, "TODO" + i);
+			employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO" + i);
+
+		}
+
+		assertEquals(20, employee2.viewActivities().size());
+		assertEquals(20, employee3.viewActivities().size());
+		assertEquals(0, employee4.viewActivities().size());
+
+		assertEquals(1, Platform.getAvailableEmployees().size());
+
+	}
 	
 	//Test make manager when already manager
 	@Test
@@ -813,8 +845,6 @@ public class TestProject {
 		employeeList.remove(employee6);
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO3");
 		
-		System.out.println(Platform.getSuitableEmployees(4));
-		
 		assertEquals(4,Platform.getSuitableEmployees(4).size());
 		
 		System.out.println(Platform.getSuitableEmployees(4));
@@ -832,6 +862,7 @@ public class TestProject {
 		assertEquals(null,Platform.getSuitableEmployees(5));
 	}
 	
+	//
 	@Test
 	public void testMakeProjectNotNull() {
 		

@@ -21,10 +21,6 @@ public abstract class Platform {
 	}
 	
 	public static List<Employee> getSuitableEmployees(int n){
-		if(n>employees.size()){
-			System.out.println("Not enough employees to get "+ n+ " suitable ones");
-			return null;
-		}
 		if(n>getAvailableEmployees().size()){
 			System.out.println("Not enough employees to get "+ n+ " suitable ones");
 			return null;
