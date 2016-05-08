@@ -223,10 +223,21 @@ public class TestProject {
 		Date start = new Date(2014 - 1900, 4, 2);
 		Date end = new Date(2016 - 1900, 11, 2);
 		
-		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
-		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
+		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO1"));
+		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO1"));
 		
 		assertEquals(1,employeeManager.getProjectInChargeOf().viewEmployeeActivities("AAAB").size());
+		
+	}
+	
+	//
+	@Test
+	public void testViewEmployeeActvitiesFail() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+		
+		employeeManager.makeManager("Project1");
+		
+		assertEquals(null,employeeManager.getProjectInChargeOf().viewEmployeeActivities("AAAC"));
 	}
 	
 	
@@ -373,6 +384,14 @@ public class TestProject {
 		
 		assertEquals(5,Math.round((employee.getHours())));
 		
+	}
+	
+	//Tests the specifying of hours on an activity the person isn't assigned to
+	@Test
+	public void testSpecifyHoursNotAssignedToActivity() {
+		Employee employee = new Employee(null, "INIT", null);
+		
+		employee.addHours(5, "TODO1");
 	}
 	
 	//Fails due to wrong amount of hours
@@ -653,4 +672,26 @@ public class TestProject {
 		
 		assertEquals(2,employeeManager.getProjectInChargeOf().getEmployees().size());
 	}
+	
+	
+	@Test
+	public void testNotEnoughSuitableEmployees() {
+		assertEquals(null,Platform.getSuitableEmployees(5));
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
