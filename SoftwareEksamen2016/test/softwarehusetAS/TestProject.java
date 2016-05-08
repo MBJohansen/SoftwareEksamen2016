@@ -229,6 +229,16 @@ public class TestProject {
 		assertEquals(1,employeeManager.getProjectInChargeOf().viewEmployeeActivities("AAAB").size());
 	}
 	
+	//
+	@Test
+	public void testViewEmployeeActvitiesFail() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+		
+		employeeManager.makeManager("Project1");
+		
+		assertEquals(null,employeeManager.getProjectInChargeOf().viewEmployeeActivities("AAAB"));
+	}
+	
 	
 	//Use Case 1
 	
@@ -373,6 +383,14 @@ public class TestProject {
 		
 		assertEquals(5,Math.round((employee.getHours())));
 		
+	}
+	
+	//Tests the specifying of hours on an activity the person isn't assigned to
+	@Test
+	public void testSpecifyHoursNotAssignedToActivity() {
+		Employee employee = new Employee(null, "INIT", null);
+		
+		employee.addHours(5, "TODO1");
 	}
 	
 	//Fails due to wrong amount of hours
