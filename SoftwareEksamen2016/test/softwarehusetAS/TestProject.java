@@ -737,27 +737,17 @@ public class TestProject {
 	}
 	
 	//Manager searching for available employees
-//	@Test
-//	public void test() {
-//		Employee employeeManager = new Employee(null, "INIT", null);
-//		Employee employee2 = new Employee(null, "AAAB", null);
-//		
-//		employeeManager.makeManager("Project1");
-//		
-//		Date start1 = new Date(2014 - 1900, 4, 2);
-//		Date end1 = new Date(2015 - 1900, 6, 2);
-//		
-//		List<Employee> employeeList = new ArrayList<Employee>();
-//		employeeList.add(employeeManager);
-//		employeeList.add(employee2);
-//		
-//		for(int i = 1; i<=20;i++) {
-//			employeeManager.createActivity(start1, end1, "Do something" + i, "TODO" + i);
-//			employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"+i);
-//		}
-//		
-//		assertEquals(null,Platform.getSuitableEmployees(5));
-//	}
+	@Test
+	public void test() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+		Employee employee2 = new Employee(null, "AAAB", null);
+		Employee employee3 = new Employee(null, "AAAC", null);
+		Employee employee4 = new Employee(null, "AAAD", null);
+		
+		employeeManager.makeManager("Project1");
+		
+		assertEquals(2,Platform.getSuitableEmployees(2).size());
+	}
 	
 	
 	
