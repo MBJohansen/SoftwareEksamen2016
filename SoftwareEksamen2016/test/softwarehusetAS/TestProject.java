@@ -672,4 +672,26 @@ public class TestProject {
 		
 		assertEquals(2,employeeManager.getProjectInChargeOf().getEmployees().size());
 	}
+	
+	
+	@Test
+	public void testNotEnoughSuitableEmployees() {
+		assertEquals(null,Platform.getSuitableEmployees(5));
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
