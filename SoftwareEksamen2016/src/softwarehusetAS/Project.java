@@ -104,9 +104,9 @@ public class Project{
 		return "Start: "+activity.getStartDate()+ " End: "+ activity.getEndDate()+ " Description: "+ activity.getDescription(); 
 	}
 	
-	public void createProject(List<Activity> activities){
-		projectActivities=activities;
-	}
+//	public void createProject(List<Activity> activities){
+//		projectActivities=activities;
+//	}
 	
 	public void addEmployee(Employee employee){
 		projectEmployee.add(employee);
