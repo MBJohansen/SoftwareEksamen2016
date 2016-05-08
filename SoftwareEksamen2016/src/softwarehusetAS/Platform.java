@@ -86,14 +86,24 @@ public abstract class Platform {
 	
 	public static List<Employee> getEmployees(List<String> s){
 		List<Employee> emp= new ArrayList();
+		List<String> notFound = new ArrayList();
+		boolean found=false;
 		
 		for(int i=0;i<s.size();i++){
+			found=false;
 			for(int j=0;j<employees.size();j++){
 				if(s.get(i).equals(employees.get(j).getID())){
 					emp.add(employees.get(j));
+					found=true;
 				}
 			}
+			if(!found){
+			notFound.add(s.get(i));
+		}}
+		for(int i=0;i<notFound.size();i++){
+			System.out.println("Employee "+ notFound.get(i)+" could not be found and has therefore not be assigned the activity");
 		}
+		
 		return emp; // s
 	}
 	
