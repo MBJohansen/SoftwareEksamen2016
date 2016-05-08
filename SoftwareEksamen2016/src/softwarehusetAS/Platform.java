@@ -52,7 +52,7 @@ public abstract class Platform {
 					if(skips.get(k)==i){
 						skip=true;
 					} 
-				}
+				}// 
 				if(!skip){
 				if(employees.get(i).isAvailable()&&employees.get(i).viewActivities().size()<20){
 				for(int j=0;j<employees.get(i).viewActiveActivities().size();j++){
