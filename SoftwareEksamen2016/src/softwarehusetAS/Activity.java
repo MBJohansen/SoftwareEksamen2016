@@ -59,5 +59,8 @@ public class Activity {
 	public String getID(){
 		return activityID;
 	}
+	public String toString(){
+		return activityID;
+	}
 
 }

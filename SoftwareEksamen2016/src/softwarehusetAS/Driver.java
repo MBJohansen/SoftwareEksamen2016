@@ -11,6 +11,19 @@ public class Driver {
 	static Employee emp;
 	public static void main(String[] args) {
 		
+		Employee employeeManager = new Employee(null, "MAN", null);
+		Employee employee2 = new Employee(null, "RAND", null);
+		
+		Date start = new Date(2016 - 1900, 2, 2);
+		Date end = new Date(2016 - 1900, 7, 5);
+		
+		employeeManager.makeManager("Project1");
+		
+		employeeManager.createActivity(start, end, "Do something1", "TODO1");
+		employeeManager.createActivity(start, end, "Do something2", "TODO2");
+		
+		
+		
 		logIn();
 		
 		doOption(mainMenu());
@@ -50,10 +63,19 @@ public class Driver {
 		System.out.println("1. Add hours");
 		System.out.println("2. Become project manager");
 		System.out.println("3. Change user");
+		System.out.println("4. End activity");
+		System.out.println("5. Add vacation");
+		System.out.println("6. Search help");
+		System.out.println("7. End week");
+		System.out.println("8. View activities");
+		System.out.println("9. Get time assigned to activity");
+		System.out.println("10. Set availability");
+
+
 		
 		if(emp.isProjectManager()){
-			System.out.println("4. Create activity");
-			System.out.println("5. Assign activity");
+			System.out.println("11. Create activity");
+			System.out.println("12. Assign activity");
 
 			
 		}
@@ -137,7 +159,7 @@ public class Driver {
 				logIn();
 				doOption(mainMenu());
 				break;
-			case 4:
+			case 11: //Create activity
 				if(emp.isProjectManager()){
 					boolean success=true;
 					Date start=null;
@@ -173,7 +195,7 @@ public class Driver {
 
 				}
 				break;
-			case 5:
+			case 12: // Assign activity
 				if(emp.isProjectManager()){
 					List<String> employeeList = new ArrayList();
 					System.out.println("Please enter the ID of the activity");
@@ -193,7 +215,87 @@ public class Driver {
 
 					}
 				break;
-			case 6:
+			case 4: // End activity
+				if(emp.viewActiveActivities().size()>0){
+				emp.endActivity();
+				if(emp.viewActiveActivities().size()>0){
+				System.out.println("You have ended your current activity and should now work on "+ emp.viewActiveActivities().get(0));
+				}else{
+					System.out.println("You have ended your current activity and you are now free");
+				}
+				
+				}
+				else{
+					System.out.println("You must have an active activity to end one");
+					
+				}
+				doOption(mainMenu());
+				break;
+			case 5: // Add vacation
+				boolean success=true;
+				Date start=null;
+				Date end=null;
+				System.out.println("Please enter a start date for the activity in the format: YYYYMMDD");
+				input=sc.next();
+				if(checkInt(input)){
+				start = new Date(Integer.parseInt(input.substring(0, 4))-1900,Integer.parseInt(input.substring(4,6))-1,Integer.parseInt(input.substring(6,8)));
+				}else{success=false;}
+				System.out.println("Please enter an end date for the activity in the format: YYYYMMDD");
+				input=sc.next();
+				if(checkInt(input)){
+					end = new Date(Integer.parseInt(input.substring(0, 4))-1900,Integer.parseInt(input.substring(4,6))-1,Integer.parseInt(input.substring(6,8)));
+				}else{success=false;}
+				if(success){
+					if(!emp.addVacation(start, end)){
+						System.out.println("Please enter valid dates");
+					}
+				}else{
+					System.out.println("Please enter valid dates");
+				}
+				doOption(mainMenu());
+				
+				break;
+			case 6: // Search for help
+				System.out.println("Enter the ID for the activity you need help with");
+				input=sc.next();
+				if(emp.searchHelp(input)){
+					System.out.println("A coworker will help shortly");
+				}else{
+					System.out.println("You are not able to receive help at this moment");
+				}
+				doOption(mainMenu());
+				break;
+			case 7: // End week
+				emp.endOfWeek();
+				doOption(mainMenu());
+				break;
+			case 8: // View activities
+				for(int i=0;i<emp.viewActivities().size();i++){
+					System.out.println(emp.viewActivities().get(i));
+				}
+				doOption(mainMenu());
+				break;
+			case 9: // Get time assigned for activity
+				System.out.println("Please enter the ID of the activity you want to look at");
+				input=sc.next();
+				if(emp.getActiveTime(input)==0){
+					System.out.println("The activity you referred to cannot be found in your activities to do. Please try again.");
+				}else{
+					System.out.println("There are " + emp.getActiveTime(input) + " hours assigned to the activity " + input);
+				}
+				doOption(mainMenu());
+				break;
+			case 10: // Set availability
+				System.out.println("Are you going to be unavailable? (Y/N)");
+				input=sc.next();
+				if(input.equals("Y")){
+				emp.setAvailable(false);
+				}else if(input.equals("N")){
+					emp.setAvailable(true);
+				}else{
+					System.out.println("Please enter a valid option");
+				}
+				doOption(mainMenu());
 				break;
 			default:
 				break;
