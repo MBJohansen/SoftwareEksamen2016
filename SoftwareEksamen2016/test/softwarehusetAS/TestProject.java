@@ -223,10 +223,11 @@ public class TestProject {
 		Date start = new Date(2014 - 1900, 4, 2);
 		Date end = new Date(2016 - 1900, 11, 2);
 		
-		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
-		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
+		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO1"));
+		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO1"));
 		
 		assertEquals(1,employeeManager.getProjectInChargeOf().viewEmployeeActivities("AAAB").size());
+		
 	}
 	
 	//
@@ -236,7 +237,7 @@ public class TestProject {
 		
 		employeeManager.makeManager("Project1");
 		
-		assertEquals(null,employeeManager.getProjectInChargeOf().viewEmployeeActivities("AAAB"));
+		assertEquals(null,employeeManager.getProjectInChargeOf().viewEmployeeActivities("AAAC"));
 	}
 	
 	
