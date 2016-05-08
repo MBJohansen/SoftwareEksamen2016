@@ -298,6 +298,8 @@ public class Driver {
 				doOption(mainMenu());
 				break;
 			default:
+				System.out.println("Please enter a valid option");
+				doOption(mainMenu());
 				break;
 		}
 		

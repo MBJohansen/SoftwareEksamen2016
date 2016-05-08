@@ -101,7 +101,7 @@ public abstract class Platform {
 			notFound.add(s.get(i));
 		}}
 		for(int i=0;i<notFound.size();i++){
-			System.out.println("Employee "+ notFound.get(i)+" could not be found and has therefore not be assigned the activity");
+			System.out.println("Employee "+ notFound.get(i)+" could not be found and has therefore not been assigned the activity");
 		}
 		
 		return emp;
