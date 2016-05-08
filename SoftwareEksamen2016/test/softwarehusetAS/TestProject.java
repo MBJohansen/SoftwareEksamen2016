@@ -681,8 +681,8 @@ public class TestProject {
 	}
 	
 	//Manager searching for available employees
-	@Test
-	public void test() {
+//	@Test
+//	public void test() {
 //		Employee employeeManager = new Employee(null, "INIT", null);
 //		Employee employee2 = new Employee(null, "AAAB", null);
 //		
@@ -701,7 +701,7 @@ public class TestProject {
 //		}
 //		
 //		assertEquals(null,Platform.getSuitableEmployees(5));
-	}
+//	}
 	
 	
 	
