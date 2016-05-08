@@ -296,6 +296,40 @@ public class TestProject {
 
 	}
 	
+	//
+	@Test
+	public void testGetEmployees() {
+		Employee employee1 = new Employee(null, "AAAA", null);
+		Employee employee2 = new Employee(null, "AAAB", null);
+		Employee employee3 = new Employee(null, "AAAC", null);
+		Employee employee4 = new Employee(null, "AAAD", null);
+		Employee employee5 = new Employee(null, "AAAE", null);
+		Employee employee6 = new Employee(null, "AAAF", null);
+		Employee employee7 = new Employee(null, "AAAG", null);
+		
+		Platform.getEmployees();
+	}
+	
+	//
+	@Test
+	public void testGetEmployeesStringList() {
+		Employee employee1 = new Employee(null, "AAAA", null);
+		Employee employee2 = new Employee(null, "AAAB", null);
+		Employee employee3 = new Employee(null, "AAAC", null);
+		Employee employee4 = new Employee(null, "AAAD", null);
+		Employee employee5 = new Employee(null, "AAAE", null);
+		Employee employee6 = new Employee(null, "AAAF", null);
+		Employee employee7 = new Employee(null, "AAAG", null);
+		
+		List<String> employeeIDs = new ArrayList<String>();
+		employeeIDs.add("AAAB");
+		employeeIDs.add("AAAC");
+		employeeIDs.add("AAAF");
+		employeeIDs.add("AAAZ");
+		
+		Platform.getEmployees(employeeIDs);
+	}
+	
 	
 	//Use Case 1
 	
