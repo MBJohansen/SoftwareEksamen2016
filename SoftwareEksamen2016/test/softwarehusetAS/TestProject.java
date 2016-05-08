@@ -832,17 +832,6 @@ public class TestProject {
 	
 	//
 	@Test
-	public void testNotEnoughSuitableEmployees2() {
-		Employee employeeManager = new Employee(null, "INIT", null);
-		Employee employee2 = new Employee(null, "AAAB", null);
-		Employee employee3 = new Employee(null, "AAAC", null);
-		Employee employee4 = new Employee(null, "AAAD", null);
-		
-		assertEquals(null,Platform.getSuitableEmployees(5));
-	}
-	
-	//
-	@Test
 	public void testMakeProjectNotNull() {
 		
 		List<Employee> projectEmployee = new ArrayList();
