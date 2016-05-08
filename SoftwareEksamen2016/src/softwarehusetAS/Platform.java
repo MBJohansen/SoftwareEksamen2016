@@ -30,7 +30,7 @@ public abstract class Platform {
 		List <Employee> finalList = getFreeEmployees();
 		List <Integer> skips = new ArrayList();
 		
-		if(finalList.size()-1>n){
+		if(finalList.size()>n){
 			for(int i=0;i<finalList.size()-n-1;i++){
 				finalList.remove(finalList.size()-1);
 			}
