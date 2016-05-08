@@ -1043,7 +1043,7 @@ public class TestProject {
 			List<Employee> employee = new ArrayList();
 			
 			employee.add(employeeManager);
-			
+		
 			for (int i = 1; i <= 20; i++) {
 				assertTrue(employeeManager.createActivity(start, end, "Do something" + i, "TODO" + i));
 				assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employee, "TODO" + i));
@@ -1064,7 +1064,7 @@ public class TestProject {
 			assertEquals(0,Platform.getSuitableEmployees(0).size());
 	}
 		
-	//
+	
 	@Test
 	public void testMoreSuitablesThanNecessary() {
 		Employee employeeManager = new Employee(null, "INIT", null);

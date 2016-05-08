@@ -75,8 +75,7 @@ public abstract class Platform {
 //				
 //			}
 //		}
-//		
-		
+
 		return finalList;
 	}
 	
