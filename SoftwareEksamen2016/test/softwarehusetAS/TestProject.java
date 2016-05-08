@@ -107,6 +107,10 @@ public class TestProject {
 		Platform.editProjects(employee.getProjectInChargeOf());
 		
 		assertEquals(0,Platform.getProjects().size());
+		
+		Platform.editProjects(employee.getProjectInChargeOf());
+		
+		assertEquals(1,Platform.getProjects().size());
 	}
 	
 	//Editing start and end dates for an activity
@@ -858,14 +862,13 @@ public class TestProject {
 		assertEquals(2,Platform.getSuitableEmployees(2).size());
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	//
+	@Test
+	public void test() {
+		
+		
+		
+	}
 	
 	
 	
