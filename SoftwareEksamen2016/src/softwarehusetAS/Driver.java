@@ -121,7 +121,7 @@ public class Driver {
 			if(!Character.isDigit(s.charAt(i))&&s.charAt(i)!='.'){
 				isInt=false;
 			}
-			if(s.charAt(i)=='.'){
+			if(s.charAt(i)=='.'){ // should only be one
 				numDots++;
 			}
 		}
