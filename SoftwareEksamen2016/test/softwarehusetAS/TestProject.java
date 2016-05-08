@@ -770,9 +770,9 @@ public class TestProject {
 		assertEquals(null,Platform.getSuitableEmployees(5));
 	}
 	
-	//Manager searching for available employees
+	//
 	@Test
-	public void test() {
+	public void testMoreSuitablesThanNecessary() {
 		Employee employeeManager = new Employee(null, "INIT", null);
 		Employee employee2 = new Employee(null, "AAAB", null);
 		Employee employee3 = new Employee(null, "AAAC", null);
