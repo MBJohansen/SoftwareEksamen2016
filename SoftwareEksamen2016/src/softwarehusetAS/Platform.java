@@ -36,7 +36,7 @@ public abstract class Platform {
 			}
 			return finalList;
 		}
-		while(finalList.size()<n&&numberIter>0){
+		while(numberIter>0&&finalList.size()<n){
 			long firstEnd=0;
 			long latestEndForEmp=0;
 			skips.add(1);

@@ -1018,6 +1018,8 @@ public class TestProject {
 		
 		employeeManager.makeManager("Project1");
 		
+		Platform.getSuitableEmployees(0);
+		
 		assertEquals(2,Platform.getSuitableEmployees(2).size());
 	}
 	
