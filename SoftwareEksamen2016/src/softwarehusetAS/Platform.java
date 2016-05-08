@@ -104,7 +104,7 @@ public abstract class Platform {
 			System.out.println("Employee "+ notFound.get(i)+" could not be found and has therefore not be assigned the activity");
 		}
 		
-		return emp; // s
+		return emp;
 	}
 	
 	public static List<Employee> getAvailableEmployees(){
