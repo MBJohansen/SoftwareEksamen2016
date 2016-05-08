@@ -1065,7 +1065,7 @@ public class TestProject {
 	}
 		
 	@Test
-	public void testRandom() {
+	public void testSuitableEmployeeWithDifferentDates() {
 		Employee employeeManager = new Employee(null, "Manager", null);
 		Employee employee2 = new Employee(null, "AAAB", null);
 	
@@ -1085,7 +1085,13 @@ public class TestProject {
 		Date end2 = new Date(2017-1900, 6-1, 12);
 		
 		assertTrue(employeeManager.createActivity(start2, end2, "Test2", "Test2"));
-		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employee, "Test1"));
+		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employee, "Test2"));
+		
+		Date start3 = new Date(2016-1900, 6-1, 10);
+		Date end3 = new Date(2019-1900, 6-1, 12);
+		
+		assertTrue(employeeManager.createActivity(start3, end3, "Test3", "Test3"));
+		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employee, "Test3"));
 		
 		employeeManager.setAvailable(false);
 		
