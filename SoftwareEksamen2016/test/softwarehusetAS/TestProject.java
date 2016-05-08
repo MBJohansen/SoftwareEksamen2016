@@ -22,7 +22,6 @@ public class TestProject {
 	//
 	@Test
 	public void constructorTest() {
-		
 		Employee employeeManager = new Employee(null, "INIT", null);
 
      	Date start = new Date(2014 - 1900, 4, 2);
@@ -40,6 +39,29 @@ public class TestProject {
 
 		Employee Intern = new Employee(activitiesList, "INTR", Platform.getProject("Project1"));
 	}
+	
+	//
+	@Test
+	public void constructorTestProjectNotExisting() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+
+     	Date start = new Date(2014 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+		
+		employeeManager.makeManager("Project1");
+		
+        List<Activity> activitiesList  = new ArrayList();
+		
+		Activity activity1 = new Activity(start, end, "Intern Assignment", "A1d");
+		Activity activity2 = new Activity(start, end, "Intern Assignment", "A2d");
+		
+		activitiesList.add(activity1);
+		activitiesList.add(activity2);
+
+		Employee Intern = new Employee(activitiesList, "INTR", Platform.getProject("Project2"));
+	}
+	
+	
 	
 	//Test make manager when already manager
 	@Test
@@ -792,7 +814,6 @@ public class TestProject {
 		
 	}
 		
-	
 	//
 	@Test
 	public void testMoreSuitablesThanNecessary() {
