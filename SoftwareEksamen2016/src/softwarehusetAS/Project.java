@@ -96,8 +96,13 @@ public class Project{
 		return finishedActivities;
 	}
 	
-	public List<Activity> viewEmployeeActivities(Employee e){
-		return e.viewActivities();
+	public List<Activity> viewEmployeeActivities(String employeeID){
+		for(int i=0; i<projectEmployee.size(); i++){
+			if(projectEmployee.get(i).getID().equals(employeeID)){
+				return projectEmployee.get(i).viewActivities();
+			}
+		}
+		return null;
 	}
 	
 	public String viewActivity(Activity activity){
