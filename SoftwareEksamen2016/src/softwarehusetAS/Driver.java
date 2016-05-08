@@ -114,14 +114,18 @@ public class Driver {
 	}
 	
 	public static boolean checkDouble( String s){
+		int numDots=0;
 		boolean isInt=true;
 		
 		for(int i=0;i<s.length();i++){
 			if(!Character.isDigit(s.charAt(i))&&s.charAt(i)!='.'){
 				isInt=false;
 			}
+			if(s.charAt(i)=='.'){
+				numDots++;
+			}
 		}
-		
+		if(numDots>1){return !isInt;}
 		return isInt;
 	}
 	
