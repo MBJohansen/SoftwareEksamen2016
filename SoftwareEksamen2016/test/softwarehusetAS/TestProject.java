@@ -664,22 +664,44 @@ public class TestProject {
 		//employee7 is the latest to be done
 		employeeList.remove(employee6);
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO3");
-		assertEquals(2,Platform.getSuitableEmployees(2).size());
+		
+		assertEquals(5,Platform.getSuitableEmployees(5).size());
 
-		for(int i = 0; i < Platform.getSuitableEmployees(2).size(); i++) {
-			employeeManager.getProjectInChargeOf().addEmployee(Platform.getSuitableEmployees(2).get(i));
+		for(int i = 0; i < Platform.getSuitableEmployees(5).size(); i++) {
+			employeeManager.getProjectInChargeOf().addEmployee(Platform.getSuitableEmployees(5).get(i));
 		}
 		
-		assertEquals(2,employeeManager.getProjectInChargeOf().getEmployees().size());
+		assertEquals(5,employeeManager.getProjectInChargeOf().getEmployees().size());
 	}
 	
-	
+	//
 	@Test
 	public void testNotEnoughSuitableEmployees() {
 		assertEquals(null,Platform.getSuitableEmployees(5));
 	}
 	
-	
+	//Manager searching for available employees
+//	@Test
+//	public void testSearchAvailableEmployees() {
+//		Employee employeeManager = new Employee(null, "INIT", null);
+//		Employee employee2 = new Employee(null, "AAAB", null);
+//		
+//		employeeManager.makeManager("Project1");
+//		
+//		Date start1 = new Date(2014 - 1900, 4, 2);
+//		Date end1 = new Date(2015 - 1900, 6, 2);
+//		
+//		List<Employee> employeeList = new ArrayList<Employee>();
+//		employeeList.add(employeeManager);
+//		employeeList.add(employee2);
+//		
+//		for(int i = 1; i<=20;i++) {
+//			employeeManager.createActivity(start1, end1, "Do something" + i, "TODO" + i);
+//			employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"+i);
+//		}
+//		
+//		assertEquals(null,Platform.getSuitableEmployees(5));
+//	}
 	
 	
 	
