@@ -69,13 +69,13 @@ public abstract class Platform {
 
 		numberIter--;	
 		}
-		if(finalList.size()>n){
-			for(int i=0;i<finalList.size()-n-1;i++){
-				finalList.remove(finalList.size()-1);
-				
-			}
-		}
-		
+//		if(finalList.size()>n){
+//			for(int i=0;i<finalList.size()-n-1;i++){
+//				finalList.remove(finalList.size()-1);
+//				
+//			}
+//		}
+//		
 		
 		return finalList;
 	}
