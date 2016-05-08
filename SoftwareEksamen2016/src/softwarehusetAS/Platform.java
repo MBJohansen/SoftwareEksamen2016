@@ -58,7 +58,7 @@ public abstract class Platform {
 				}
 				if (firstEnd==0 || latestEndForEmp<firstEnd){
 					firstEnd=latestEndForEmp;
-					skips.set(skips.size(), i);
+					skips.set(skips.size()-1, i);
 				}}
 				
 				
