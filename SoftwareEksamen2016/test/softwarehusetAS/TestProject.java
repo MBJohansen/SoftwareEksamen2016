@@ -431,7 +431,7 @@ public class TestProject {
 		Employee employee6 = new Employee(null, "AAAF", null);
 		Employee employee7 = new Employee(null, "AAAG", null);
 		
-		Platform.getEmployees();
+		assertEquals(7,Platform.getEmployees().size());
 	}
 	
 	//
@@ -451,7 +451,8 @@ public class TestProject {
 		employeeIDs.add("AAAF");
 		employeeIDs.add("AAAZ");
 		
-		Platform.getEmployees(employeeIDs);
+		//AAAZ does not exist
+		assertEquals(3,Platform.getEmployees(employeeIDs).size());
 	}
 	
 	//
