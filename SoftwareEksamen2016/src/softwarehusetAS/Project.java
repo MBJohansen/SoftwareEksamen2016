@@ -105,8 +105,13 @@ public class Project{
 		return null;
 	}
 	
-	public String viewActivity(Activity activity){
-		return "Start: "+activity.getStartDate()+ " End: "+ activity.getEndDate()+ " Description: "+ activity.getDescription(); 
+	public String viewActivity(String activityID){
+		for(int i=0; i<projectActivities.size(); i++){
+			if(projectActivities.get(i).getID().equals(activityID)){
+				return "Start: "+projectActivities.get(i).getStartDate()+ " End: "+ projectActivities.get(i).getEndDate()+ " Description: "+ projectActivities.get(i).getDescription(); 
+			}
+		}
+		return "Activity does not exist";
 	}
 	
 //	public void createProject(List<Activity> activities){
