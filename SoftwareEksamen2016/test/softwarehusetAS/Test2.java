@@ -11,14 +11,66 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Test;
 //
-/*public class Test2 {
+public class Test2 {
 
 	@After
 	public void doReset() {
 		Platform.reset();
 	}
-}
+	
+	
+	@Test
+	public void testVacation(){
+		
+		// Testing that the employee can go on vacation
+		Employee employee = new Employee(null, "INIT", null);
+		
+		Date start = new Date(2016-1900, 10, 10);
+		Date end = new Date(2016-1900, 10, 12);
+		
+	Activity activity = new Activity(start, end, "Do something", "TODO1");
+		
+		employee.addActivity(activity);
+		
+		assertTrue(employee.addVacation(start, end));
+		
+		assertEquals(2, employee.viewActiveActivities().size());
+		
+		assertFalse(employee.onVacation());
+		
+		Date start2 = new Date(2020-1900, 02-1, 02);
+		Date end2 = new Date(2020-1900, 03-1, 02);
+		
+		employee.Edit(start2, end2, "VAC");
+		
+		assertFalse(employee.onVacation());
+		
+		Date start3 = new Date(2014-1900, 02-1, 02);
+		Date end3 = new Date(2014-1900, 03-1, 02);
+		
+		employee.Edit(start3, end3, "VAC");
+		
+		assertFalse(employee.onVacation());
 
+		Date start4 = new Date(2020-1900, 02-1, 02);
+		Date end4 = new Date(2014-1900, 03-1, 02);
+		
+		employee.Edit(start4, end4, "VAC");
+		
+		assertFalse(employee.onVacation());
+		
+		Date start5 = new Date(2014-1900, 02-1, 02);
+		Date end5 = new Date(2020-1900, 03-1, 03);
+		
+		employee.Edit(start5, end5, "VAC");
+	
+		assertTrue(employee.onVacation());
+	}
+	
+	//Typing wrong dates on a vacation-activity
+	
+	
+}
 /*	@Test
 	public void testingStuff2() {
 
