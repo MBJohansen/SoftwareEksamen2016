@@ -31,7 +31,7 @@ public abstract class Platform {
 		}
 		
 		int numberIter=n;
-		List <Employee> finalList = getAvailableEmployees();
+		List <Employee> finalList = getFreeEmployees();
 		List <Integer> skips = new ArrayList();
 		
 		if(finalList.size()>n){
