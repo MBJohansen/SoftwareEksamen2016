@@ -85,13 +85,11 @@ public class Employee {
 	}
 	
 	public void setActivity(List<Activity> activities){
-		this.activities=activities;
-		this.allActivities=activities;
-		if(activities.equals(null)){
-			
-		}else{
-		free=false;
-		currentActivity=activities.get(0);
+		if(activities!=null){
+			this.activities=activities;
+			this.allActivities=activities;
+			free=false;
+			currentActivity=activities.get(0);
 		}
 	}
 	

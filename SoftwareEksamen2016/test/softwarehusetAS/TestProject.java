@@ -282,6 +282,21 @@ public class TestProject {
 		Intern.setActivity(activitiesList);
 	}
 	
+	//Giving an employee a list of activities
+	@Test
+	public void testSetActivitiesNull() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+		
+		employeeManager.makeManager("Project1");
+		
+		Employee Intern = new Employee(null, "INTR", Platform.getProject("Project1"));
+        
+		List<Activity> activitiesList  = null;
+		
+		Intern.setActivity(activitiesList);
+	}
+	
+	
 	//
 	@Test
 	public void testViewEmployeeActivities() {
