@@ -249,7 +249,7 @@ public class Employee {
 		if(free&&!avail){
 			free=false;
 		}else{
-			if(this.activities.size()==0&&avail){
+			if(avail&&this.activities.size()==0){
 				free=true;
 			}
 		}
