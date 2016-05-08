@@ -451,6 +451,7 @@ public class TestProject {
 		employeeIDs.add("AAAF");
 		employeeIDs.add("AAAZ");
 		
+		//AAAZ does not exist
 		assertEquals(3,Platform.getEmployees(employeeIDs).size());
 	}
 	
