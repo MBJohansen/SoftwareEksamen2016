@@ -729,7 +729,7 @@ public class TestProject {
 		Employee employee3 = new Employee(null, "AAAC", null);
 		
 		Date start = new Date(2016 - 1900, 2, 2);
-		Date end = new Date(2016 - 1900, 2, 4);
+		Date end = new Date(2018 - 1900, 2, 4);
 		
 		employeeManager.makeManager("Project1");
 		
@@ -740,8 +740,31 @@ public class TestProject {
 		
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
 		
+		employee2.Edit(start, new Date(2016-1900,2,4), "TODO");
 		assertFalse(employee2.searchHelp("TODO"));
 	}
+	
+	//Searching for help to an activity not assigned to the employee
+		@Test
+		public void testSearchHelpNoActivity() {
+			Employee employeeManager = new Employee(null, "INIT", null);
+			Employee employee2 = new Employee(null, "AAAB", null);
+			Employee employee3 = new Employee(null, "AAAC", null);
+			
+			Date start = new Date(2016 - 1900, 2, 2);
+			Date end = new Date(2018 - 1900, 2, 4);
+			
+			employeeManager.makeManager("Project1");
+			
+			employeeManager.createActivity(start, end, "Do something", "TODO");
+			
+			List<Employee> employeeList = new ArrayList<Employee>();
+			employeeList.add(employee2);
+			
+			employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
+			
+			assertFalse(employee2.searchHelp("WRONG"));
+		}
 	
 	
 	//Use Case 4
@@ -779,7 +802,53 @@ public class TestProject {
 		assertFalse(employee.onVacation());
 	}
 	
+	@Test
+	public void testVacation(){
+		
+		// Testing that the employee can go on vacation
+		Employee employee = new Employee(null, "INIT", null);
+		
+		Date start = new Date(2016-1900, 10, 10);
+		Date end = new Date(2016-1900, 10, 12);
+		
+	Activity activity = new Activity(start, end, "Do something", "TODO1");
+		
+		employee.addActivity(activity);
+		
+		assertTrue(employee.addVacation(start, end));
+		
+		assertEquals(2, employee.viewActiveActivities().size());
+		
+		assertFalse(employee.onVacation());
+		
+		Date start2 = new Date(2020-1900, 02-1, 02);
+		Date end2 = new Date(2020-1900, 03-1, 02);
+		
+		employee.Edit(start2, end2, "VAC");
+		
+		assertFalse(employee.onVacation());
+		
+		Date start3 = new Date(2014-1900, 02-1, 02);
+		Date end3 = new Date(2014-1900, 03-1, 02);
+		
+		employee.Edit(start3, end3, "VAC");
+		
+		assertFalse(employee.onVacation());
+
+		Date start4 = new Date(2020-1900, 02-1, 02);
+		Date end4 = new Date(2014-1900, 03-1, 02);
+		
+		employee.Edit(start4, end4, "VAC");
+		
+		assertFalse(employee.onVacation());
+		
+		Date start5 = new Date(2014-1900, 02-1, 02);
+		Date end5 = new Date(2020-1900, 03-1, 03);
+		
+		employee.Edit(start5, end5, "VAC");
 	
+		assertTrue(employee.onVacation());
+	}
 	//Use Case 5
 	
 	//Tests the creation of a status report
