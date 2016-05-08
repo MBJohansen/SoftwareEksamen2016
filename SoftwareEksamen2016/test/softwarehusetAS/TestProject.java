@@ -923,6 +923,7 @@ public class TestProject {
 		
 		//employee5 is the first to be done
 		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employeeManager);
 		employeeList.add(employee2);
 		employeeList.add(employee3);
 		employeeList.add(employee4);
