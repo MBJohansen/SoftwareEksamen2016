@@ -253,14 +253,16 @@ public class TestProject {
 		employeeManager.makeManager("Project1");
 		
 		Employee employee2 = new Employee(null, "AAAB", null);
-		List<Employee> employeeList = new ArrayList<Employee>();
-		employeeList.add(employee2);
+		List<Employee> projectEmployee = new ArrayList();
+		
+		projectEmployee.add(employee2);
+		
 		
 		Date start = new Date(2014 - 1900, 4, 2);
 		Date end = new Date(2016 - 1900, 11, 2);
 		
 		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO1"));
-		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO1"));
+		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(projectEmployee, "TODO1"));
 		
 		assertEquals(1,employeeManager.getProjectInChargeOf().viewEmployeeActivities("AAAB").size());
 		
@@ -268,12 +270,27 @@ public class TestProject {
 	
 	//
 	@Test
-	public void testViewEmployeeActvitiesFail() {
-		Employee employeeManager = new Employee(null, "INIT", null);
+	public void testViewEmployeeActivitiesFail() {
+	Employee employeeManager = new Employee(null, "INIT", null);
 		
 		employeeManager.makeManager("Project1");
 		
-		assertEquals(null,employeeManager.getProjectInChargeOf().viewEmployeeActivities("AAAC"));
+		Employee employee2 = new Employee(null, "AAAB", null);
+		Employee employee3 = new Employee(null, "AABB", null);
+		List<Employee> projectEmployee = new ArrayList();
+		
+		projectEmployee.add(employee2);
+		projectEmployee.add(employee3);
+		
+		Date start = new Date(2014 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+		
+		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO1"));
+		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(projectEmployee, "TODO1"));
+		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO2"));
+		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(projectEmployee, "TODO2"));
+		assertEquals(null, employeeManager.getProjectInChargeOf().viewEmployeeActivities("AAAC"));
+		
 	}
 	
 	// Testing viewing an activity that exists, and the ID is correct

@@ -20,18 +20,14 @@ import org.junit.Test;
 	}
 
 	
+	
+	
+	
+	
+	
+	
+	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
 	// Testing viewing an activity that exists, and the ID is correct
 /*	@Test
 	public void testViewActivityExists() {
