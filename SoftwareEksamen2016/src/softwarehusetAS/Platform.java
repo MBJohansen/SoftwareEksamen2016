@@ -49,7 +49,7 @@ public abstract class Platform {
 					} 
 				}
 				if(!skip){
-				if(employees.get(i).isAvailable()&&employees.get(i).viewActivities().size()<20){
+				if(employees.get(i).viewActivities().size()<20&&employees.get(i).isAvailable()){
 				for(int j=0;j<employees.get(i).viewActiveActivities().size();j++){
 					latestEndForEmp=0;
 					if (employees.get(i).viewActiveActivities().get(j).getEndDate().getTime()>latestEndForEmp){

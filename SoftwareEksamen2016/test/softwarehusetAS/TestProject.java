@@ -1027,6 +1027,41 @@ public class TestProject {
 	    Project project1 = new Project(projectEmployee, projectActivities, "Project 1");	
 		
 	}
+	
+	@Test
+	public void testSuitbleEmployeesWithTooManyActivities() {
+			Employee employeeManager = new Employee(null, "INIT", null);
+			Employee employee2 = new Employee(null, "AAAB", null);
+			Employee employee3 = new Employee(null, "AAAC", null);
+		
+			employeeManager.makeManager("Project1");
+			
+			Date start = new Date(2016-1900, 6-1, 10);
+			Date end = new Date(2016-1900, 6-1, 12);
+			
+			List<Employee> employee = new ArrayList();
+			
+			employee.add(employeeManager);
+			
+			for (int i = 1; i <= 20; i++) {
+				assertTrue(employeeManager.createActivity(start, end, "Do something" + i, "TODO" + i));
+				assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employee, "TODO" + i));
+			}
+
+			List<Employee> employeeList2 = new ArrayList();
+			
+			employeeList2.add(employee2);
+			employeeList2.add(employee3);
+		
+			assertTrue(employeeManager.createActivity(start, end, "Test", "Test1"));
+			assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList2, "Test1"));
+			
+			employee3.setAvailable(false);
+			
+			assertEquals(1,Platform.getSuitableEmployees(1).size());
+
+			assertEquals(0,Platform.getSuitableEmployees(0).size());
+	}
 		
 	//
 	@Test
