@@ -847,8 +847,6 @@ public class TestProject {
 		
 		assertEquals(4,Platform.getSuitableEmployees(4).size());
 		
-		System.out.println(Platform.getSuitableEmployees(4));
-		
 		for(int i = 0; i < Platform.getSuitableEmployees(4).size(); i++) {
 			employeeManager.getProjectInChargeOf().addEmployee(Platform.getSuitableEmployees(4).get(i));
 		}
