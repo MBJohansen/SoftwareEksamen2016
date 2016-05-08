@@ -420,6 +420,27 @@ public class TestProject {
 		Platform.getEmployees(employeeIDs);
 	}
 	
+	//
+	@Test
+	public void testActivityToString() {
+		Employee employeeManager = new Employee(null,"INIT",null);
+		
+		employeeManager.makeManager("Project1");
+		
+		Date start = new Date(2014 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+		
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employeeManager);
+		
+		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO"));
+		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO"));
+		
+		
+		assertEquals("TODO",employeeManager.viewActivities().get(0).toString());
+		
+	}
+	
 	
 	//Use Case 1
 	
@@ -933,12 +954,6 @@ public class TestProject {
 		
 		
 		assertEquals(4,Platform.getSuitableEmployees(4).size());
-		
-		for(int i = 0; i < Platform.getSuitableEmployees(4).size(); i++) {
-			employeeManager.getProjectInChargeOf().addEmployee(Platform.getSuitableEmployees(4).get(i));
-		}
-		
-		assertEquals(4,employeeManager.getProjectInChargeOf().getEmployees().size());
 		
 	}
 	
