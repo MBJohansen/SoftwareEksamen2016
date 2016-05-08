@@ -240,6 +240,62 @@ public class TestProject {
 		assertEquals(null,employeeManager.getProjectInChargeOf().viewEmployeeActivities("AAAC"));
 	}
 	
+	// Testing viewing an activity that exists, and the ID is correct
+	@Test
+	public void testViewActivityExists() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+		Employee employee2 = new Employee(null, "AAAB", null);
+
+		employeeManager.makeManager("Project1");
+
+		Date start = new Date(2016 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+
+		employeeManager.createActivity(start, end, "Do something", "TODO");
+		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
+		assertEquals("Start: Mon May 02 00:00:00 CEST 2016 End: Fri Dec 02 00:00:00 CET 2016 Description: Do something",
+				employeeManager.getProjectInChargeOf().viewActivity("TODO"));
+
+	}
+
+	// Testing viewing an activity that does not exist.
+	@Test
+	public void testViewActivityDoesNotExist() {
+
+		Employee employeeManager = new Employee(null, "INIT", null);
+
+		employeeManager.makeManager("Project1");
+
+		Date start = new Date(2016 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+
+		assertEquals("Activity does not exist", employeeManager.getProjectInChargeOf().viewActivity("Unassigned"));
+
+	}
+
+	// Testing viewing an activity that does not exist, when an activity exists.
+	@Test
+	public void testViewActivityWrongID() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+		Employee employee2 = new Employee(null, "AAAB", null);
+
+		employeeManager.makeManager("Project1");
+
+		Date start = new Date(2016 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+
+		employeeManager.createActivity(start, end, "Do something", "TODO");
+		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
+		assertEquals("Activity does not exist", employeeManager.getProjectInChargeOf().viewActivity("Unassigned"));
+
+	}
+	
 	
 	//Use Case 1
 	
