@@ -64,7 +64,6 @@ public class TestProject {
 	//
 	@Test
 	public void testGetAvailable() {
-
 		Employee employeeManager = new Employee(null, "INIT", null);
 
 		Date start = new Date(2014 - 1900, 4, 2);
