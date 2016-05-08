@@ -207,6 +207,9 @@ public class Driver {
 					next=sc.next();
 					}
 					emp.getProjectInChargeOf().assignActivity(Platform.getEmployees(employeeList), activityID);
+					if(emp.getProjectInChargeOf().getActivities().size()==0 || emp.getProjectInChargeOf().viewActivity(activityID).equals("Activity does not exist")){
+						System.out.println("You do not have managing access to " + activityID);
+					}
 					doOption(mainMenu());// s
 					
 				}else{
