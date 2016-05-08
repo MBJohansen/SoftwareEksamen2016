@@ -615,6 +615,8 @@ public class TestProject {
 		Employee employeeManager = new Employee(null, "INIT", null);
 		Employee employee2 = new Employee(null, "AAAB", null);
 		
+		employeeManager.makeManager("Project1");
+		
 		Date start = new Date(2017 - 1900, 5, 2);
 		Date end = new Date(2017 - 1900, 5, 5);
 		
