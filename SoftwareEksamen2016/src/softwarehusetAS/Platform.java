@@ -65,7 +65,7 @@ public abstract class Platform {
 			}else{skip=false;}
 				
 			}
-			finalList.add(employees.get(skips.get(skips.size())));
+			finalList.add(employees.get(skips.get(skips.size()-1)));
 
 		numberIter--;	
 		}

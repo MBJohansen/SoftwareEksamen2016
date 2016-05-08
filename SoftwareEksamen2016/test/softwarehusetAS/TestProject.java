@@ -813,13 +813,15 @@ public class TestProject {
 		employeeList.remove(employee6);
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO3");
 		
-		assertEquals(5,Platform.getSuitableEmployees(5).size());
-
-		for(int i = 0; i < Platform.getSuitableEmployees(5).size(); i++) {
-			employeeManager.getProjectInChargeOf().addEmployee(Platform.getSuitableEmployees(5).get(i));
+		assertEquals(6,Platform.getSuitableEmployees(6).size());
+		
+		System.out.println(Platform.getSuitableEmployees(6));
+		
+		for(int i = 0; i < Platform.getSuitableEmployees(6).size(); i++) {
+			employeeManager.getProjectInChargeOf().addEmployee(Platform.getSuitableEmployees(6).get(i));
 		}
 		
-		assertEquals(5,employeeManager.getProjectInChargeOf().getEmployees().size());
+		assertEquals(6,employeeManager.getProjectInChargeOf().getEmployees().size());
 	}
 	
 	//
