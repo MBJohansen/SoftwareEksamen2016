@@ -1064,6 +1064,43 @@ public class TestProject {
 			assertEquals(0,Platform.getSuitableEmployees(0).size());
 	}
 		
+	@Test
+	public void testRandom() {
+		Employee employeeManager = new Employee(null, "Manager", null);
+		Employee employee2 = new Employee(null, "AAAB", null);
+	
+		employeeManager.makeManager("Project1");
+		
+		Date start = new Date(2016-1900, 6-1, 10);
+		Date end = new Date(2018-1900, 6-1, 12);
+		
+		List<Employee> employee = new ArrayList();
+		
+        employee.add(employee2);
+		
+		assertTrue(employeeManager.createActivity(start, end, "Test1", "Test1"));
+		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employee, "Test1"));
+		
+		Date start2 = new Date(2016-1900, 6-1, 10);
+		Date end2 = new Date(2017-1900, 6-1, 12);
+		
+		assertTrue(employeeManager.createActivity(start2, end2, "Test2", "Test2"));
+		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employee, "Test1"));
+		
+		employeeManager.setAvailable(false);
+		
+		
+		System.out.println(Platform.getSuitableEmployees(1));
+		
+		assertEquals(1,Platform.getSuitableEmployees(1).size());
+		
+		
+		
+	
+	}
+
+
+	
 	
 	@Test
 	public void testMoreSuitablesThanNecessary() {

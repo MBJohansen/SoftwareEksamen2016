@@ -254,5 +254,6 @@ public class Employee {
 			}
 		}
 		this.available=avail;
+		Platform.update();
 	}
 }
