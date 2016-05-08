@@ -38,9 +38,18 @@ public class Driver {
 		System.out.println("Enter your user ID: ");
 		Scanner sc = new Scanner (System.in);
 		input=sc.next();
-		if(input.length()!=4){
-			logIn();
+		boolean digits=false;
+		for(int i=0;i<input.length();i++){
+			if(Character.isDigit(input.charAt(i))){
+				digits=true;
+			}
 		}
+		
+		if(input.length()>4||digits){
+			System.out.println("Please enter a valid ID");
+			logIn();
+			
+		}else{
 		
 		for(int i=0;i<Platform.getEmployees().size();i++){
 			if(input.equals(Platform.getEmployees().get(i).getID())){
@@ -55,7 +64,7 @@ public class Driver {
 			emp = new Employee(null,input,null);
 			loggedID=input;
 		}
-	}
+	}}
 	
 	public static int mainMenu(){
 
