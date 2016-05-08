@@ -12,14 +12,15 @@ import org.junit.After;
 import org.junit.Test;
 
 //
-public class Test2 {
+/*public class Test2 {
 
 	@After
 	public void doReset() {
 		Platform.reset();
 	}
+}
 
-	@Test
+/*	@Test
 	public void testingStuff2() {
 
 		Employee employeeManager = new Employee(null, "INIT", null);
