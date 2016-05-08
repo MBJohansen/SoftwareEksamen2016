@@ -95,6 +95,20 @@ public class TestProject {
 		assertFalse(Platform.getProject("Project1").isActive());
 	}
 	
+	//Deleting a project
+	@Test
+	public void testDeleteProject() {
+		Employee employee = new Employee(null, "INIT", null);
+
+		employee.makeManager("Project1");
+		
+		assertEquals(1,Platform.getProjects().size());
+		
+		Platform.editProjects(employee.getProjectInChargeOf());
+		
+		assertEquals(0,Platform.getProjects().size());
+	}
+	
 	//Editing start and end dates for an activity
 	@Test
 	public void testEditActvityDates() {
