@@ -31,10 +31,9 @@ public abstract class Platform {
 		List <Integer> skips = new ArrayList();
 		
 		if(finalList.size()>n){
-			for(int i=0;i<finalList.size()-n-1;i++){
+			for(int i=0;i<finalList.size()-n;i++){
 				finalList.remove(finalList.size()-1);
 			}
-			finalList.remove(finalList.size()-1);
 			return finalList;
 		}
 		while(finalList.size()<n&&numberIter>0){
