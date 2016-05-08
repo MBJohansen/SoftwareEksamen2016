@@ -38,6 +38,9 @@ public class Driver {
 		System.out.println("Enter your user ID: ");
 		Scanner sc = new Scanner (System.in);
 		input=sc.next();
+		if(input.length()!=4){
+			logIn();
+		}
 		
 		for(int i=0;i<Platform.getEmployees().size();i++){
 			if(input.equals(Platform.getEmployees().get(i).getID())){
