@@ -25,6 +25,11 @@ public abstract class Platform {
 			System.out.println("Not enough employees to get "+ n+ " suitable ones");
 			return null;
 		}
+		if(n>getAvailableEmployees().size()){
+			System.out.println("Not enough employees to get "+ n+ " suitable ones");
+			return null;
+		}
+		
 		int numberIter=n;
 		List <Employee> finalList = getAvailableEmployees();
 		List <Integer> skips = new ArrayList();
