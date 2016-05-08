@@ -133,6 +133,7 @@ public class Employee {
 		activities.add(activity);
 		allActivities.add(activity);
 		free=false;
+		Platform.update();
 	}
 	
 	

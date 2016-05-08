@@ -909,20 +909,20 @@ public class TestProject {
 		employeeManager.makeManager("Project1");
 		
 		Date start1 = new Date(2014 - 1900, 4, 2);
-		Date end1 = new Date(2015 - 1900, 6, 2);
+		Date end1 = new Date(2017 - 1900, 6, 2);
 		
 		Date start2 = new Date(2014 - 1900, 5, 2);
-		Date end2 = new Date(2015 - 1900, 11, 2);
+		Date end2 = new Date(2017 - 1900, 11, 2);
 		
 		Date start3 = new Date(2014 - 1900, 8, 2);
-		Date end3 = new Date(2015 - 1900, 12, 2);
+		Date end3 = new Date(2017 - 1900, 12, 2);
 		
 		employeeManager.createActivity(start1, end1, "First", "TODO1");
 		employeeManager.createActivity(start2, end2, "Second", "TODO2");
 		employeeManager.createActivity(start3, end3, "Third", "TODO3");
 		
 		//employee5 is the first to be done
-		List<Employee> employeeList = new ArrayList<Employee>();
+		List<Employee> employeeList = new ArrayList();
 		employeeList.add(employeeManager);
 		employeeList.add(employee2);
 		employeeList.add(employee3);
@@ -930,6 +930,7 @@ public class TestProject {
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO1");
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO2");
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO3");
+		
 		
 		assertEquals(4,Platform.getSuitableEmployees(4).size());
 		
