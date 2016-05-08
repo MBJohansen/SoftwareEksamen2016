@@ -143,9 +143,6 @@ public class TestProject {
 		assertEquals(1,Platform.getProjects().size());
 	}
 	
-	
-	
-	
 	//Editing start and end dates for an activity
 	@Test
 	public void testEditActvityDates() {
@@ -296,6 +293,29 @@ public class TestProject {
 		Intern.setActivity(activitiesList);
 	}
 	
+	//End week without having finished any activities
+	@Test
+	public void testEndOfWeek() {
+		Employee employeeManager = new Employee(null, "INIT", null);
+		
+		employeeManager.makeManager("Project1");
+		
+		Date start = new Date(2017 - 1900, 5, 2);
+		Date end = new Date(2017 - 1900, 5, 5);
+		
+		assertTrue(employeeManager.createActivity(start, end, "Do something", "TODO1"));
+		
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employeeManager);
+		
+		assertTrue(employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO1"));
+		
+		assertEquals(1,employeeManager.viewActivities().size());
+		
+		Platform.endOfWeek();
+		
+		assertEquals(1,employeeManager.viewActivities().size());
+	}
 	
 	//
 	@Test
