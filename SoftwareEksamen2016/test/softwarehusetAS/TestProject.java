@@ -770,6 +770,29 @@ public class TestProject {
 		assertEquals(null,Platform.getSuitableEmployees(5));
 	}
 	
+	@Test
+	public void testMakeProjectNotNull() {
+		
+		List<Employee> projectEmployee = new ArrayList();
+		
+		List<Activity> projectActivities = new ArrayList();
+		
+		Date start = new Date(2014 - 1900, 4, 2);
+		Date end = new Date(2016 - 1900, 11, 2);
+		
+		Employee employee = new Employee(null, "INIT", null);
+		
+		Activity activity1 = new Activity(start, end, "Intern Assignment", "A1d");
+		
+		projectActivities.add(activity1);
+		
+		projectEmployee.add(employee);
+		
+	    Project project1 = new Project(projectEmployee, projectActivities, "Project 1");	
+		
+	}
+		
+	
 	//
 	@Test
 	public void testMoreSuitablesThanNecessary() {

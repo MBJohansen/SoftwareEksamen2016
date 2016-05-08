@@ -1,6 +1,7 @@
 package softwarehusetAS;
 
 import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -11,16 +12,28 @@ import org.junit.After;
 import org.junit.Test;
 
 //
-public class Test2 {
+/*public class Test2 {
 	//
 	@After
 	public void doReset() {
 		Platform.reset();
 	}
-	//
 
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
 	// Testing viewing an activity that exists, and the ID is correct
-	@Test
+/*	@Test
 	public void testViewActivityExists() {
 		Employee employeeManager = new Employee(null, "INIT", null);
 		Employee employee2 = new Employee(null, "AAAB", null);
@@ -75,7 +88,7 @@ public class Test2 {
 
 	}
 
-}
+}*/
 // @Test
 // public void testVacationSuccess (){
 //
