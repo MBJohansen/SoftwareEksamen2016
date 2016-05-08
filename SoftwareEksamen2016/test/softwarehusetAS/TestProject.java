@@ -898,9 +898,45 @@ public class TestProject {
 	
 	//
 	@Test
-	public void test() {
+	public void testGoDeeper() {
+		
+		Employee employeeManager = new Employee(null, "INIT", null);
+		Employee employee2 = new Employee(null, "AAAB", null);
+		Employee employee3 = new Employee(null, "AAAC", null);
+		Employee employee4 = new Employee(null, "AAAD", null);
 		
 		
+		employeeManager.makeManager("Project1");
+		
+		Date start1 = new Date(2014 - 1900, 4, 2);
+		Date end1 = new Date(2015 - 1900, 6, 2);
+		
+		Date start2 = new Date(2014 - 1900, 5, 2);
+		Date end2 = new Date(2015 - 1900, 11, 2);
+		
+		Date start3 = new Date(2014 - 1900, 8, 2);
+		Date end3 = new Date(2015 - 1900, 12, 2);
+		
+		employeeManager.createActivity(start1, end1, "First", "TODO1");
+		employeeManager.createActivity(start2, end2, "Second", "TODO2");
+		employeeManager.createActivity(start3, end3, "Third", "TODO3");
+		
+		//employee5 is the first to be done
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add(employee2);
+		employeeList.add(employee3);
+		employeeList.add(employee4);
+		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO1");
+		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO2");
+		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO3");
+		
+		assertEquals(4,Platform.getSuitableEmployees(4).size());
+		
+		for(int i = 0; i < Platform.getSuitableEmployees(4).size(); i++) {
+			employeeManager.getProjectInChargeOf().addEmployee(Platform.getSuitableEmployees(4).get(i));
+		}
+		
+		assertEquals(4,employeeManager.getProjectInChargeOf().getEmployees().size());
 		
 	}
 	
