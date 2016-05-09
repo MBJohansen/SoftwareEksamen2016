@@ -2,206 +2,184 @@ package softwarehusetAS;
 
 import java.util.ArrayList;
 import java.util.List;
- 
+
 public abstract class Platform {
-	//private List<ProjectManager> projectManagers;
+	// private List<ProjectManager> projectManagers;
 	private static List<Employee> employees = new ArrayList<Employee>();
 	private static List<Employee> availableEmployees = new ArrayList<Employee>();
 	private static List<Project> projects = new ArrayList<Project>();
-	
-	
-	/*public List<ProjectManager> getProjectManagers(){
-		return projectManagerss;
-	}*/  
-	
-	public static void endOfWeek(){
-		for(int i=0;i<employees.size();i++){
+
+	/*
+	 * public List<ProjectManager> getProjectManagers(){ return
+	 * projectManagerss; }
+	 */
+
+	public static void endOfWeek() {
+		for (int i = 0; i < employees.size(); i++) {
 			employees.get(i).endOfWeek();
 		}
 	}
-	
-	public static List<Employee> getSuitableEmployees(int n){
-		if(n>getAvailableEmployees().size()){
-			System.out.println("Not enough employees to get "+ n+ " suitable ones");
+
+	public static List<Employee> getSuitableEmployees(int n) {
+		if (n > getAvailableEmployees().size()) {
+			System.out.println("Not enough employees to get " + n + " suitable ones");
 			return null;
 		}
-		if(n==0){
+		if (n == 0) {
 			return new ArrayList();
 		}
-		int numberIter=n;
-		List <Employee> finalList = getFreeEmployees();
-		List <Integer> skips = new ArrayList();
-		
-		if(finalList.size()>n){
-			for(int i=0;i<finalList.size()-n;i++){
-				finalList.remove(finalList.size()-1);
+		int numberIter = n;
+		List<Employee> finalList = getFreeEmployees();
+		List<Integer> skips = new ArrayList();
+
+		if (finalList.size() > n) {
+			for (int i = 0; i < finalList.size() - n; i++) {
+				finalList.remove(finalList.size() - 1);
 			}
 			return finalList;
 		}
-		while(numberIter>0&&finalList.size()<n){
-			long firstEnd=0;
-			long latestEndForEmp=0;
+		while (numberIter > 0 && finalList.size() < n) {
+			long firstEnd = 0;
+			long latestEndForEmp = 0;
 			skips.add(1);
-			boolean skip=false;
-			
-			for(int i=0;i<employees.size();i++){
-				latestEndForEmp=0;
-				for(int k=0;k<skips.size();k++){
-					if(skips.get(k)==i){
-						skip=true;
-					} 
-				}
-				if(!skip){
-				if(employees.get(i).viewActivities().size()<20&&employees.get(i).isAvailable()){
-					
-				for(int j=0;j<employees.get(i).viewActiveActivities().size();j++){
-					
-					if (employees.get(i).viewActiveActivities().get(j).getEndDate().getTime()>latestEndForEmp){
-						latestEndForEmp=employees.get(i).viewActiveActivities().get(j).getEndDate().getTime();
+			boolean skip = false;
+
+			for (int i = 0; i < employees.size(); i++) {
+				latestEndForEmp = 0;
+				for (int k = 0; k < skips.size(); k++) {
+					if (skips.get(k) == i) {
+						skip = true;
 					}
 				}
-				if (firstEnd==0 || latestEndForEmp<firstEnd){
-					firstEnd=latestEndForEmp;
-					skips.set(skips.size()-1, i);
-				}}
-				
-				
-			}else{skip=false;}
-				
-			}
-			finalList.add(employees.get(skips.get(skips.size()-1)));
+				if (!skip) {
+					if (employees.get(i).viewActivities().size() < 20 && employees.get(i).isAvailable()) {
 
-		numberIter--;	
+						for (int j = 0; j < employees.get(i).viewActiveActivities().size(); j++) {
+
+							if (employees.get(i).viewActiveActivities().get(j).getEndDate()
+									.getTime() > latestEndForEmp) {
+								latestEndForEmp = employees.get(i).viewActiveActivities().get(j).getEndDate().getTime();
+							}
+						}
+						if (firstEnd == 0 || latestEndForEmp < firstEnd) {
+							firstEnd = latestEndForEmp;
+							skips.set(skips.size() - 1, i);
+						}
+					}
+
+				} else {
+					skip = false;
+				}
+
+			}
+			finalList.add(employees.get(skips.get(skips.size() - 1)));
+
+			numberIter--;
 		}
-//		if(finalList.size()>n){
-//			for(int i=0;i<finalList.size()-n-1;i++){
-//				finalList.remove(finalList.size()-1);
-//				
-//			}
-//		}
+		// if(finalList.size()>n){
+		// for(int i=0;i<finalList.size()-n-1;i++){
+		// finalList.remove(finalList.size()-1);
+		//
+		// }
+		// }
 
 		return finalList;
 	}
-	
-	public static List<Employee> getEmployees(){
+
+	public static List<Employee> getEmployees() {
 		return employees;
 	}
-	
-	public static List<Employee> getEmployees(List<String> s){
-		List<Employee> emp= new ArrayList();
+
+	public static List<Employee> getEmployees(List<String> s) {
+		List<Employee> emp = new ArrayList();
 		List<String> notFound = new ArrayList();
-		boolean found=false;
-		
-		for(int i=0;i<s.size();i++){
-			found=false;
-			for(int j=0;j<employees.size();j++){
-				if(s.get(i).equals(employees.get(j).getID())){
+		boolean found = false;
+
+		for (int i = 0; i < s.size(); i++) {
+			found = false;
+			for (int j = 0; j < employees.size(); j++) {
+				if (s.get(i).equals(employees.get(j).getID())) {
 					emp.add(employees.get(j));
-					found=true;
+					found = true;
 				}
 			}
-			if(!found){
-			notFound.add(s.get(i));
-		}}
-		for(int i=0;i<notFound.size();i++){
-			System.out.println("Employee "+ notFound.get(i)+" could not be found");
+			if (!found) {
+				notFound.add(s.get(i));
+			}
 		}
-		
+		for (int i = 0; i < notFound.size(); i++) {
+			System.out.println("Employee " + notFound.get(i) + " could not be found");
+		}
+
 		return emp;
 	}
-	
-	public static List<Employee> getAvailableEmployees(){
-		List <Employee> outputList = new ArrayList<Employee>();
-		
-		for(int i=0;i<employees.size();i++){
-			if(employees.get(i).isAvailable()&&employees.get(i).viewActivities().size()<20){
+
+	public static List<Employee> getAvailableEmployees() {
+		List<Employee> outputList = new ArrayList<Employee>();
+
+		for (int i = 0; i < employees.size(); i++) {
+			if (employees.get(i).isAvailable() && employees.get(i).viewActivities().size() < 20) {
 				outputList.add(employees.get(i));
 			}
 		}
-		
+
 		return outputList;
 	}
-	
-	public static List<Employee> getFreeEmployees(){
+
+	public static List<Employee> getFreeEmployees() {
 		return availableEmployees;
 	}
-	
-	public static List<Project> getProjects(){
+
+	public static List<Project> getProjects() {
 		return projects;
 	}
-	
-	/*public void editProjectManagers(ProjectManager projectManager){
+
+	public static boolean editEmployee(String employeeID) {
 		Boolean found = false;
-		for(int i=0; i<projectManagers.size(); i++){
-			if(projectManagers.get(i).equals(projectManager)){
-				projectManagers.remove(i);
-				found=true;
-			}
-		}
-		if(found==false){
-				projectManagers.add(projectManager);
-		}
-	}*/
-	
-	public static boolean editEmployee(String employeeID){
-		Boolean found = false;
-		for(int i=0; i<employees.size(); i++){
-			if(employees.get(i).getID().equals(employeeID)){
-				//employees.remove(i);
-				found=true;
+		for (int i = 0; i < employees.size(); i++) {
+			if (employees.get(i).getID().equals(employeeID)) {
+				// employees.remove(i);
+				found = true;
 			}
 		}
 		return found;
 	}
-	
-	public static void addEmployee(Employee emp){
+
+	public static void addEmployee(Employee emp) {
 		employees.add(emp);
 	}
-	
-	public static void editProjects(Project project){
+
+	public static void editProjects(Project project) {
 		Boolean found = false;
-		for(int i=0; i<projects.size(); i++){
-			if(projects.get(i).equals(project)){
+		for (int i = 0; i < projects.size(); i++) {
+			if (projects.get(i).equals(project)) {
 				projects.remove(i);
-				found=true;
+				found = true;
 			}
 		}
-		if(found==false){
-				projects.add(project);
+		if (found == false) {
+			projects.add(project);
 		}
 	}
-	
-	/*public static void editAvailableEmployee(Employee availableEmployee){
-		Boolean found = false;
-		for(int i=0; i<availableEmployees.size(); i++){
-			if(availableEmployees.get(i).equals(availableEmployee)){
-				availableEmployees.remove(i);
-				found=true;
-			}
-		}
-		if(found==false){
-			availableEmployees.add(availableEmployee);
-		}
-	}*/
-	
-	public static void update(){
+
+	public static void update() {
 		availableEmployees.clear();
-		for(int i=0; i<employees.size(); i++){
-			if(employees.get(i).isFree()){
+		for (int i = 0; i < employees.size(); i++) {
+			if (employees.get(i).isFree()) {
 				availableEmployees.add(employees.get(i));
 			}
 		}
 	}
-	
-	public static void reset (){
+
+	public static void reset() {
 		employees = new ArrayList<Employee>();
 		availableEmployees = new ArrayList<Employee>();
-		projects = new ArrayList<Project>();	
+		projects = new ArrayList<Project>();
 	}
-	
+
 	public static Project getProject(String projectName) {
-		for(Project project : projects) {
-			if(projectName.equals(project.getName())) {
+		for (Project project : projects) {
+			if (projectName.equals(project.getName())) {
 				return project;
 			}
 		}
