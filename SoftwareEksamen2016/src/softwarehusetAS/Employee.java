@@ -1,3 +1,4 @@
+//Kristoffer og Mikkel (Alle har dog bidraget)
 package softwarehusetAS;
 
 import java.util.Date;

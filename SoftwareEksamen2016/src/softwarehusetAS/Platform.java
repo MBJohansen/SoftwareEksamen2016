@@ -1,3 +1,4 @@
+// Mikkel og Kristoffer (Alle har dog bidraget)
 package softwarehusetAS;
 
 import java.util.ArrayList;

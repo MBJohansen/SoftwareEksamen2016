@@ -1,3 +1,4 @@
+//Mads og Gustav (Alle har dog bidraget)
 package softwarehusetAS;
 
 import static org.junit.Assert.assertEquals;
