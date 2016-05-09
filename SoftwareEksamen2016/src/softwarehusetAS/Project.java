@@ -40,10 +40,7 @@ public class Project {
 
 	}
 
-	// public void editActivity(Date newEndTime, Activity activity){
-	// newEndTime.setYear(newEndTime.getYear());
-	// activity.editEndDate(newEndTime);
-	// }
+
 
 	public boolean assignActivity(List<Employee> employees, String activityID) {
 		boolean success = false;
@@ -116,9 +113,6 @@ public class Project {
 		return "Activity does not exist";
 	}
 
-	// public void createProject(List<Activity> activities){
-	// projectActivities=activities;
-	// }
 
 	public void addEmployee(Employee employee) {
 		projectEmployee.add(employee);

@@ -4,15 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Platform {
-	// private List<ProjectManager> projectManagers;
+
 	private static List<Employee> employees = new ArrayList<Employee>();
 	private static List<Employee> availableEmployees = new ArrayList<Employee>();
 	private static List<Project> projects = new ArrayList<Project>();
 
-	/*
-	 * public List<ProjectManager> getProjectManagers(){ return
-	 * projectManagerss; }
-	 */
+	
 
 	public static void endOfWeek() {
 		for (int i = 0; i < employees.size(); i++) {
@@ -76,12 +73,7 @@ public abstract class Platform {
 
 			numberIter--;
 		}
-		// if(finalList.size()>n){
-		// for(int i=0;i<finalList.size()-n-1;i++){
-		// finalList.remove(finalList.size()-1);
-		//
-		// }
-		// }
+		
 
 		return finalList;
 	}
