@@ -25,7 +25,9 @@ public abstract class Platform {
 			System.out.println("Not enough employees to get "+ n+ " suitable ones");
 			return null;
 		}
-		
+		if(n==0){
+			return null;
+		}
 		int numberIter=n;
 		List <Employee> finalList = getFreeEmployees();
 		List <Integer> skips = new ArrayList();
@@ -102,7 +104,7 @@ public abstract class Platform {
 			notFound.add(s.get(i));
 		}}
 		for(int i=0;i<notFound.size();i++){
-			System.out.println("Employee "+ notFound.get(i)+" could not be found and has therefore not been assigned the activity");
+			System.out.println("Employee "+ notFound.get(i)+" could not be found");
 		}
 		
 		return emp;

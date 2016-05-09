@@ -27,6 +27,8 @@ public class Project{
 		isActive=true;
 	}
 	
+	
+	
 	public List <Activity> getActivities(){
 		return projectActivities;
 	}

@@ -22,6 +22,7 @@ public class Driver {
 		employeeManager.createActivity(start, end, "Do something1", "TODO1");
 		employeeManager.createActivity(start, end, "Do something2", "TODO2");
 		
+		employeeManager.getProjectInChargeOf().endDate=new Date(2017-1900,5-1,11);
 		
 		
 		logIn();
@@ -88,8 +89,13 @@ public class Driver {
 		if(emp.isProjectManager()){
 			System.out.println("11. Create activity");
 			System.out.println("12. Assign activity");
+			System.out.println("13. Create report");
+			System.out.println("14. Change project end date");
+			System.out.println("15. Find suitable employees");
+			System.out.println("16. Set employee's availabiity");
+			System.out.println("17. View work hours used on activity");
 
-			
+
 		}
 		Scanner sc = new Scanner (System.in);
 		String input;
@@ -167,8 +173,22 @@ public class Driver {
 				break;
 			case 2: // Become project manager
 				System.out.println("Please enter the name of the project");
+				String projName=sc.next();
+				System.out.println("Please enter the end date of the project");
 				input=sc.next();
-				emp.makeManager(input);
+				Date ended;
+				if(checkInt(input)&&input.length()==8){
+					ended = new Date(Integer.parseInt(input.substring(0, 4))-1900,Integer.parseInt(input.substring(4,6))-1,Integer.parseInt(input.substring(6,8)));
+					if(ended.after(new Date())){
+						emp.makeManager(projName);
+						emp.getProjectInChargeOf().endDate=ended;
+						System.out.println(projName+" has been created");
+					}else{
+						System.out.println("The date you entered was before today. Please try again with a valid date");
+						}
+				}else{
+					System.out.println("You must follow the format YYYYMMDD as described. Please try again with a valid date");
+				}
 				doOption(mainMenu());
 				break;
 			case 3: // change user
@@ -177,21 +197,25 @@ public class Driver {
 				break;
 			case 11: //Create activity
 				if(emp.isProjectManager()){
+					if(emp.getProjectInChargeOf().endDate.after(new Date())){
 					boolean success=true;
 					Date start=null;
 					Date end=null;
 					System.out.println("Please enter a start date for the activity in the format: YYYYMMDD");
 					input=sc.next();
-					if(checkInt(input)){
+					if(checkInt(input)&&input.length()==8){
 					start = new Date(Integer.parseInt(input.substring(0, 4))-1900,Integer.parseInt(input.substring(4,6))-1,Integer.parseInt(input.substring(6,8)));
 					}else{success=false;}
 					System.out.println("Please enter an end date for the activity in the format: YYYYMMDD");
 					input=sc.next();
-					if(checkInt(input)){
+					if(checkInt(input)&&input.length()==8){
 						end = new Date(Integer.parseInt(input.substring(0, 4))-1900,Integer.parseInt(input.substring(4,6))-1,Integer.parseInt(input.substring(6,8)));
 					}else{success=false;}
 					System.out.println("Please enter a description for the activity");
-					String desc = sc.next();
+					sc.useDelimiter(System.getProperty("line.separator"));
+
+					String desc=sc.next();
+					
 					System.out.println("Please enter an ID for the activity");
 					String ID=sc.next();
 					
@@ -204,6 +228,10 @@ public class Driver {
 						System.out.println("You have entered invalid dates. Please try again");
 					}
 					doOption(mainMenu());
+				}else{
+					System.out.println("There must be more time assigned to the project before you can create new activities");
+					doOption(mainMenu());
+					}
 				}
 				else{
 					System.out.println("Please enter a valid option");
@@ -286,6 +314,8 @@ public class Driver {
 				break;
 			case 7: // End week
 				emp.endOfWeek();
+				int numActiv=20-emp.viewActivities().size();
+				System.out.println("You have registered your finished activities for the week and can start "+numActiv + " new ones");
 				doOption(mainMenu());
 				break;
 			case 8: // View activities
@@ -315,6 +345,116 @@ public class Driver {
 					System.out.println("Please enter a valid option");
 				}
 				doOption(mainMenu());
+				break;
+			case 13:
+				if(emp.isProjectManager()){
+					if(new Date().getDay()!=5){
+						System.out.println("Please note that today is not a friday");
+					}
+					emp.getProjectInChargeOf().createReport();
+					doOption(mainMenu());
+				}else{
+						System.out.println("Please enter a valid option");
+						doOption(mainMenu());
+
+					}
+				
+				break;
+			case 14:
+				if(emp.isProjectManager()){
+					
+					System.out.println("Please enter a new end date in the format YYYYMMDD");
+					input=sc.next();
+					if(checkInt(input)&&input.length()==8){
+						ended = new Date(Integer.parseInt(input.substring(0, 4))-1900,Integer.parseInt(input.substring(4,6))-1,Integer.parseInt(input.substring(6,8)));
+						if(ended.after(new Date())){
+							emp.getProjectInChargeOf().endDate=ended;
+							System.out.println("The end date has been changed to "+ended);
+						}else{
+							System.out.println("You cannot change your end date to a date before today");
+						}
+					}else{
+						System.out.println("Please enter a valid date in the format YYYYMMDD");
+					}
+					doOption(mainMenu());
+				}else{
+						System.out.println("Please enter a valid option");
+						doOption(mainMenu());
+
+					}
+				
+				break;
+			case 15:
+				if(emp.isProjectManager()){
+				System.out.println("How man employees are you looking for");
+				input=sc.next();
+				if(checkInt(input)){
+					List<Employee> printer=Platform.getSuitableEmployees(Integer.parseInt(input));
+					if(printer!=null){
+						System.out.println("The ID's of the most suitable employees are "+printer);
+					}else{
+						if(Integer.parseInt(input)==0){
+						System.out.println("You didn't look for any employees");}
+					}
+					doOption(mainMenu());
+
+				}
+				
+				}else{
+					System.out.println("Please enter a valid option");
+					doOption(mainMenu());
+
+				}
+				
+				break;
+			case 16:
+					if(emp.isProjectManager()){
+						System.out.println("Please enter the ID of the employee you want to mark unavailable/available");
+						input=sc.next();
+						List<String> listOfEmp=new ArrayList();
+						listOfEmp.add(input);
+						if(Platform.getEmployees(listOfEmp).size()>0){
+						System.out.println("Will he be unavailable? (Y/N)");
+						input=sc.next();
+						if(input.equals("Y")){
+							Platform.getEmployees(listOfEmp).get(0).setAvailable(false);
+						}else if(input.equals("N")){
+							Platform.getEmployees(listOfEmp).get(0).setAvailable(true);
+						}else{
+							System.out.println("Please enter a valid option");
+						}}
+						
+						
+						doOption(mainMenu());
+					}else{
+							System.out.println("Please enter a valid option");
+							doOption(mainMenu());
+
+						}
+					
+					break;
+			case 17:
+				if(emp.isProjectManager()){
+					System.out.println("Please enter the activity ID");
+					input=sc.next();
+					boolean found=false;
+					
+					for(Activity a : emp.getProjectInChargeOf().getActivities()){
+						if(a.getID().equals(input)){
+							System.out.println(a.getHours()+" hours have been recorded for this activity");
+							found=true;
+						}
+					}
+					if(!found){
+						System.out.println("The activity could not be found");
+					}
+					
+				}else{
+						System.out.println("Please enter a valid option");
+						doOption(mainMenu());
+
+					}
+				
 				break;
 			default:
 				System.out.println("Please enter a valid option");
