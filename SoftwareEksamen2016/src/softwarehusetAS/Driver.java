@@ -418,7 +418,7 @@ public class Driver {
 						List<String> listOfEmp=new ArrayList();
 						listOfEmp.add(input);
 						if(Platform.getEmployees(listOfEmp).size()>0){
-						System.out.println("Will he be unavailable? (Y/N)");
+						System.out.println("Will he/she be unavailable? (Y/N)");
 						input=sc.next();
 						if(input.equals("Y")){
 							Platform.getEmployees(listOfEmp).get(0).setAvailable(false);
