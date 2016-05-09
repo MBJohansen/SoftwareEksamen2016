@@ -443,7 +443,7 @@ public class TestProject {
 	}
 	
 	
-	//Use Case 6
+	//Use Case 6 (See line 124)
 	//The tests for use case 6 is elsewhere because it only uses the setAvailable method
 	
 	
@@ -579,7 +579,7 @@ public class TestProject {
 	
 	//
 	@Test
-	public void testSuitbleEmployeesWithTooManyActivities() {
+	public void testSuitableEmployeesWithTooManyActivities() {
 		Employee employeeManager = new Employee(null, "INIT", null);
 		Employee employee2 = new Employee(null, "AAAB", null);
 		Employee employee3 = new Employee(null, "AAAC", null);
@@ -665,7 +665,7 @@ public class TestProject {
 	
 	//
 	@Test
-	public void testGoDeeper() {
+	public void testEmployeesEndingSameTime() {
 		Employee employeeManager = new Employee(null, "INIT", null);
 		Employee employee2 = new Employee(null, "AAAB", null);
 		Employee employee3 = new Employee(null, "AAAC", null);
@@ -686,7 +686,6 @@ public class TestProject {
 		employeeManager.createActivity(start2, end2, "Second", "TODO2");
 		employeeManager.createActivity(start3, end3, "Third", "TODO3");
 		
-		//employee5 is the first to be done
 		List<Employee> employeeList = new ArrayList();
 		employeeList.add(employeeManager);
 		employeeList.add(employee2);
@@ -829,7 +828,7 @@ public class TestProject {
 	
 	//Editing start and end dates for an activity
 	@Test
-	public void testEditActvityDates() {
+	public void testEditActivityDates() {
 		Employee employeeManager = new Employee(null, "INIT", null);
 		Employee employee2 = new Employee(null, "AAAB", null);
 		
