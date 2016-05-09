@@ -94,6 +94,7 @@ public class Driver {
 			System.out.println("15. Find suitable employees");
 			System.out.println("16. Set employee's availabiity");
 			System.out.println("17. View work hours used on activity");
+			System.out.println("18. Edit activity end date");
 
 
 		}
@@ -448,13 +449,53 @@ public class Driver {
 					if(!found){
 						System.out.println("The activity could not be found");
 					}
-					
+					doOption(mainMenu());
+
 				}else{
 						System.out.println("Please enter a valid option");
 						doOption(mainMenu());
 
 					}
 				
+				break;
+			case 18:
+				if(emp.isProjectManager()){
+					System.out.println("Please enter the activity ID");
+					input=sc.next();
+					boolean found=false;
+					Activity temp=null;
+					
+					for(Activity a : emp.getProjectInChargeOf().getActivities()){
+						if(a.getID().equals(input)){
+							temp=a;
+							found=true;
+						}
+					}
+					if(!found){
+						System.out.println("The activity could not be found");
+
+					}else{
+					
+					
+					System.out.println("Please enter a new end date in the format YYYYMMDD");
+					input=sc.next();
+					if(checkInt(input)&&input.length()==8){
+						ended = new Date(Integer.parseInt(input.substring(0, 4))-1900,Integer.parseInt(input.substring(4,6))-1,Integer.parseInt(input.substring(6,8)));
+						if(ended.after(new Date())){
+							temp.setEndDate(ended);
+							System.out.println("The end date has been changed to "+ended);
+						}else{
+							System.out.println("You cannot change your end date to a date before today");
+						}
+					}else{
+						System.out.println("Please enter a valid date in the format YYYYMMDD");
+					}}
+				}else{
+						System.out.println("Please enter a valid option");
+
+					}
+				doOption(mainMenu());
+
 				break;
 			default:
 				System.out.println("Please enter a valid option");
