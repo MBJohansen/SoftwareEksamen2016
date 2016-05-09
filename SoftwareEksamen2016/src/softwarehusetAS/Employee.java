@@ -151,7 +151,7 @@ public class Employee {
 	
 	/*public void RegisterTime(Activity activity, Date date, Boolean pastEvent){
 		
-	}*/
+	}*/ 
 	
 	public boolean Edit(Date start, Date end, String ID){
 		for(int i =0; i<allActivities.size(); i++){

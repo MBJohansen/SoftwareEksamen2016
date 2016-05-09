@@ -2,7 +2,7 @@ package softwarehusetAS;
 
 import java.util.ArrayList;
 import java.util.List;
-
+ 
 public abstract class Platform {
 	//private List<ProjectManager> projectManagers;
 	private static List<Employee> employees = new ArrayList<Employee>();

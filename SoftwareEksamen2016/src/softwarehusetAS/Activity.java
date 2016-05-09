@@ -53,7 +53,7 @@ public class Activity {
 	}
 	
 	public Boolean getFinished(){
-		return finished;
+		return finished; 
 	}
 	
 	public String getID(){

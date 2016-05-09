@@ -64,7 +64,7 @@ public class Project{
 		}
 		
 		Date currentDate = new Date ();
-		
+		 
 		if(currentDate.after(activity.getEndDate())) {
 			return false;
 		}
