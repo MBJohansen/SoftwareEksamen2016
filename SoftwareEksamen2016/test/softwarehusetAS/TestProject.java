@@ -507,7 +507,7 @@ public class TestProject {
 		employeeManager.makeManager("Project1");
 		
 		//employee3 has no activities
-		
+
 		//employee2 and 4 are unavailable
 		employee2.setAvailable(false);
 		employee4.setAvailable(false);
@@ -657,8 +657,6 @@ public class TestProject {
 		Employee employee4 = new Employee(null, "AAAD", null);
 		
 		employeeManager.makeManager("Project1");
-		
-		Platform.getSuitableEmployees(0);
 		
 		assertEquals(2,Platform.getSuitableEmployees(2).size());
 	}
