@@ -19,6 +19,7 @@ public class TestProject {
 		Platform.reset();
 	}
 	
+	
 	//Use Case 1
 	
 	//Non-manager failing to create an activity
@@ -700,6 +701,7 @@ public class TestProject {
 	
 	
 	//Other tests
+	//not decidedly part of the use cases but used to test other methods
 	
 	//
 	@Test
