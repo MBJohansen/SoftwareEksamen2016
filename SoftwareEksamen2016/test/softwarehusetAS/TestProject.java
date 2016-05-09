@@ -443,7 +443,7 @@ public class TestProject {
 	}
 	
 	
-	//Use Case 6
+	//Use Case 6 (See line 124)
 	//The tests for use case 6 is elsewhere because it only uses the setAvailable method
 	
 	
