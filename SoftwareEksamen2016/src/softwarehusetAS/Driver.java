@@ -83,18 +83,21 @@ public class Driver {
 		System.out.println("8. View activities");
 		System.out.println("9. Get time assigned to activity");
 		System.out.println("10. Set availability");
+		System.out.println("11. Check hours worked");
+
 
 
 		
 		if(emp.isProjectManager()){
-			System.out.println("11. Create activity");
-			System.out.println("12. Assign activity");
-			System.out.println("13. Create report");
-			System.out.println("14. Change project end date");
-			System.out.println("15. Find suitable employees");
-			System.out.println("16. Set employee's availabiity");
-			System.out.println("17. View work hours used on activity");
-			System.out.println("18. Edit activity end date");
+			System.out.println("12. Create activity");
+			System.out.println("13. Assign activity");
+			System.out.println("14. Create report");
+			System.out.println("15. Change project end date");
+			System.out.println("16. Find suitable employees");
+			System.out.println("17. Set employee's availabiity");
+			System.out.println("18. View work hours used on activity");
+			System.out.println("19. Edit activity end date");
+			System.out.println("20. View activity details");
 
 
 		}
@@ -196,7 +199,7 @@ public class Driver {
 				logIn();
 				doOption(mainMenu());
 				break;
-			case 11: //Create activity
+			case 12: //Create activity
 				if(emp.isProjectManager()){
 					if(emp.getProjectInChargeOf().endDate.after(new Date())){
 					boolean success=true;
@@ -240,7 +243,7 @@ public class Driver {
 
 				}
 				break;
-			case 12: // Assign activity
+			case 13: // Assign activity
 				if(emp.isProjectManager()){
 					List<String> employeeList = new ArrayList();
 					System.out.println("Please enter the ID of the activity");
@@ -347,7 +350,7 @@ public class Driver {
 				}
 				doOption(mainMenu());
 				break;
-			case 13:
+			case 14:
 				if(emp.isProjectManager()){
 					if(new Date().getDay()!=5){
 						System.out.println("Please note that today is not a friday");
@@ -361,7 +364,7 @@ public class Driver {
 					}
 				
 				break;
-			case 14:
+			case 15:
 				if(emp.isProjectManager()){
 					
 					System.out.println("Please enter a new end date in the format YYYYMMDD");
@@ -385,7 +388,7 @@ public class Driver {
 					}
 				
 				break;
-			case 15:
+			case 16:
 				if(emp.isProjectManager()){
 				System.out.println("How man employees are you looking for");
 				input=sc.next();
@@ -408,7 +411,7 @@ public class Driver {
 				}
 				
 				break;
-			case 16:
+			case 17:
 					if(emp.isProjectManager()){
 						System.out.println("Please enter the ID of the employee you want to mark unavailable/available");
 						input=sc.next();
@@ -434,7 +437,7 @@ public class Driver {
 						}
 					
 					break;
-			case 17:
+			case 18:
 				if(emp.isProjectManager()){
 					System.out.println("Please enter the activity ID");
 					input=sc.next();
@@ -458,7 +461,7 @@ public class Driver {
 					}
 				
 				break;
-			case 18:
+			case 19:
 				if(emp.isProjectManager()){
 					System.out.println("Please enter the activity ID");
 					input=sc.next();
@@ -496,6 +499,25 @@ public class Driver {
 					}
 				doOption(mainMenu());
 
+				break;
+			case 20:
+				if(emp.isProjectManager()){
+					System.out.println("Please enter the activity ID");
+					input=sc.next();
+					System.out.println(emp.getProjectInChargeOf().viewActivity(input));
+					doOption(mainMenu());
+
+					
+				}else{
+						System.out.println("Please enter a valid option");
+						doOption(mainMenu());
+
+					}
+				
+				break;
+			case 11:
+				System.out.println("You have worked " + emp.getHours() + " hours");
+				doOption(mainMenu());
 				break;
 			default:
 				System.out.println("Please enter a valid option");

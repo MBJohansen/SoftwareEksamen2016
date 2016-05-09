@@ -1064,7 +1064,7 @@ public class TestProject {
 
 		employeeManager.createActivity(start, end, "Do something", "TODO");
 		employeeManager.getProjectInChargeOf().assignActivity(employeeList, "TODO");
-		assertEquals("Start: Mon May 02 00:00:00 CEST 2016 End: Fri Dec 02 00:00:00 CET 2016 Description: Do something",
+		assertEquals("TODO: Start: Mon May 02 00:00:00 CEST 2016 End: Fri Dec 02 00:00:00 CET 2016 Description: Do something",
 				employeeManager.getProjectInChargeOf().viewActivity("TODO"));
 
 	}

@@ -45,13 +45,13 @@ public abstract class Platform {
 			boolean skip=false;
 			
 			for(int i=0;i<employees.size();i++){
+				latestEndForEmp=0;
 				for(int k=0;k<skips.size();k++){
 					if(skips.get(k)==i){
 						skip=true;
 					} 
 				}
 				if(!skip){
-//					latestEndForEmp=0;
 				if(employees.get(i).viewActivities().size()<20&&employees.get(i).isAvailable()){
 					
 				for(int j=0;j<employees.get(i).viewActiveActivities().size();j++){

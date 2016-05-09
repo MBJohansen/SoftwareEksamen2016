@@ -110,7 +110,7 @@ public class Project{
 	public String viewActivity(String activityID){
 		for(int i=0; i<projectActivities.size(); i++){
 			if(projectActivities.get(i).getID().equals(activityID)){
-				return "Start: "+projectActivities.get(i).getStartDate()+ " End: "+ projectActivities.get(i).getEndDate()+ " Description: "+ projectActivities.get(i).getDescription(); 
+				return "" + activityID + ": Start: "+projectActivities.get(i).getStartDate()+ " End: "+ projectActivities.get(i).getEndDate()+ " Description: "+ projectActivities.get(i).getDescription(); 
 			}
 		}
 		return "Activity does not exist";
