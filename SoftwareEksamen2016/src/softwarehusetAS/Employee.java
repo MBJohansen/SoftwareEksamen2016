@@ -152,14 +152,7 @@ public class Employee {
 		}
 		return false;
 	}
-
-	/*
-	 * public void RegisterTime(Activity activity, Date date, Boolean
-	 * pastEvent){
-	 * 
-	 * }
-	 */
-
+	
 	public boolean Edit(Date start, Date end, String ID) {
 		for (int i = 0; i < allActivities.size(); i++) {
 			if (allActivities.get(i).getID().equals(ID)) {
