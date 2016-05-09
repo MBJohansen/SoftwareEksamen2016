@@ -26,7 +26,7 @@ public abstract class Platform {
 			return null;
 		}
 		if(n==0){
-			return null;
+			return new ArrayList();
 		}
 		int numberIter=n;
 		List <Employee> finalList = getFreeEmployees();

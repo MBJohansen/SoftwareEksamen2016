@@ -391,11 +391,11 @@ public class Driver {
 				if(checkInt(input)){
 					List<Employee> printer=Platform.getSuitableEmployees(Integer.parseInt(input));
 					if(printer!=null){
-						System.out.println("The ID's of the most suitable employees are "+printer);
-					}else{
 						if(Integer.parseInt(input)==0){
-						System.out.println("You didn't look for any employees");}
+							System.out.println("You didn't look for any employees");}
+						System.out.println("The ID's of the most suitable employees are "+printer);
 					}
+					
 					doOption(mainMenu());
 
 				}
